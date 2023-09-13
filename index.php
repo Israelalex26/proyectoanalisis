@@ -9,7 +9,8 @@
         <label for="correo">Correo Electrónico:</label>
         <input type="text" name="correo" required><br><br>
 
-    <h1>Estoy comprobando la sinconizacion!!</h1>
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" name="contrasena" required><br><br>
 
         <input type="submit" value="Iniciar sesión">
     </form>
