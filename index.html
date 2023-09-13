@@ -1,20 +1,18 @@
 <!DOCTYPE html>
-
-<html lang="es">
-
+<html>
 <head>
-
-    <title>ProyectoNonima</title>
-
+    <title>Iniciar sesión</title>
 </head>
-
-
 <body>
+    <h2>Iniciar sesión</h2>
+    <form action="login.php" method="POST">
+        <label for="correo">Correo Electrónico:</label>
+        <input type="text" name="correo" required><br><br>
 
-    <h1>Estoy comprobando la sinconizacion!!</h1>
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" name="contrasena" required><br><br>
 
-    <img src="img/logo_nonima.png" height="50px" width="50px">
-
+        <input type="submit" value="Iniciar sesión">
+    </form>
 </body>
-
 </html>
