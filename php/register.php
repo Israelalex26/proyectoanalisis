@@ -4,46 +4,37 @@ $user = "root";
 $pass = "";
 $db = "nomina";
 
-// Crear una conexión
+// Crear una conexión a la base de datos
 $conn = new mysqli($server, $user, $pass, $db);
 
 // Verificar la conexión
 if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
+    die("La conexión a la base de datos falló: " . $conn->connect_error);
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $correo_electronico = $_POST["correo_electronico"];
-    $contrasena = $_POST["contrasena"];
-    $rol = $_POST["rol"];
-    $nombre_usuario = $_POST["nombre_usuario"];
+// Recuperar datos del formulario
+$correo_electronico = $_POST['correo_electronico'];
+$nombre_usuario = $_POST['nombre_usuario'];
+$contrasena = $_POST['contrasena'];
 
-    // Hash de la contraseña (para mayor seguridad)
-    $hashed_password = password_hash($contrasena, PASSWORD_DEFAULT);
+// Modificar la estructura de la tabla para hacer que "id_users" sea autoincremental
+$alterTableSql = "ALTER TABLE users MODIFY COLUMN id_users INT AUTO_INCREMENT";
 
-    // Consulta SQL para insertar el usuario en la tabla
-    $sql = "INSERT INTO users (correo_electronico, contrasena, rol, nombre_usuario) VALUES (?, ?, ?, ?)";
+if ($conn->query($alterTableSql) === TRUE) {
+    // Ahora, la columna "id_users" está configurada como autoincremental
 
-    // Preparar la consulta
-    $stmt = $conn->prepare($sql);
-    
-    // Vincular los parámetros
-    $stmt->bind_param("ssss", $correo_electronico, $hashed_password, $rol, $nombre_usuario);
+    // Insertar datos en la tabla "users" sin especificar un valor para "id_users"
+    $sql = "INSERT INTO users (correo_electronico, nombre_usuario, contrasena, rol) VALUES ('$correo_electronico', '$nombre_usuario', '$contrasena', 'rol_por_defecto')";
 
-    // Ejecutar la consulta
-    if ($stmt->execute()) {
-        echo "Usuario registrado correctamente.";
+    if ($conn->query($sql) === TRUE) {
+        echo "Registro exitoso. ¡Bienvenido!";
     } else {
-        echo "Error al registrar el usuario: " . $stmt->error;
+        echo "Error al registrar usuario: " . $conn->error;
     }
-
-    // Cerrar la conexión
-    $stmt->close();
+} else {
+    echo "Error al modificar la tabla: " . $conn->error;
 }
 
 // Cerrar la conexión a la base de datos
 $conn->close();
-
-
-
 ?>

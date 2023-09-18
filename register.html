@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8"> <!-- Agrega esta línea para especificar la codificación UTF-8 -->
     <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
-    <link href="./css/main.css" rel="stylesheet" />
+    <link href="./css/register.css" rel="stylesheet" />
     <title>Nomina PA</title>
 </head>
 
@@ -19,13 +19,20 @@
 
         <span class="v10_125">Introduce tus datos para crear
             tu cuenta</span>
-        <span class="v10_126">Inicia sesión</span>
+
+        <span class="v10_126">Bienvenido</span>
 
         <!-- Aquí agregamos el formulario -->
-        <form action="php/login.php" method="POST">
+        <form action="php/register.php" method="POST">
+
             <div class="v10_128">
                 <label for="correo_electronico" class="v10_129">Correo electrónico</label>
                 <input type="email" id="correo_electronico" name="correo_electronico" class="v10_130" placeholder="Ingrese su correo electrónico">
+            </div>
+
+            <div class="v10_2_128">
+                <label for="correo_electronico" class="v10_129">Nombre de usuario</label>
+                <input type="text" id="nombre_usuario" name="nombre_usuario" class="v10_130" placeholder="Ingrese su nombre de usuario">
             </div>
 
             <div class="v10_132">
@@ -33,20 +40,24 @@
                 <input type="password" id="contrasena" name="contrasena" class="v10_134" placeholder="Ingrese su contraseña">
             </div>
 
-            <button class="v10_137">
-                <span class="v10_138">Iniciar sesión</span>
+            <button class="v10_2_137">
+                <span class="v10_138">Crear cuenta</span>
             </button>
         </form>
         <!-- Fin del formulario -->
 
+        <span class="termsPolicy1">Al registrarte, aceptas los Términos de servicio y la
+            Política de privacidad, incluida la política de Uso 
+           de Cookies.</span>
+       
 
-        <span class="v10_136">¿No tienes una cuenta? <a href="register.html" class="v10_136-bold">Regístrate</a> </span>
+
+        <span class="v10_136">¿Ya tienes una cuenta? <a href="index.html" class="v10_136-bold">Iniciar sesión</a> </span>
 
 
 
     </div>
 
-    <span class="v10_199">Copyright @PA 2023 | Privacy Policy</span>
 
 </body>
 
