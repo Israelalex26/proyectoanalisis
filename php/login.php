@@ -26,10 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: inicio.php"); // Cambia "inicio.php" por la URL de la página a la que deseas redirigir.
     } else {
         // Las credenciales son inválidas, muestra un mensaje de error.
-        echo "Credenciales incorrectas. Intente nuevamente.";
+        echo '<script>alert("Credenciales incorrectas. Intente nuevamente.");</script>';
+
     }
 }
 
 $conexion->close();
-?>
 
+?>
