@@ -1,49 +1,42 @@
 <?php
+// Conexión a la base de datos
 $server = "localhost";
 $user = "root";
 $pass = "";
 $db = "nomina";
 
-// Crear una conexión a la base de datos
-$conn = new mysqli($server, $user, $pass, $db);
+$conexion = new mysqli($server, $user, $pass, $db);
 
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("La conexión a la base de datos falló: " . $conn->connect_error);
+if ($conexion->connect_errno){
+    die("Conexion Fallida". $conexion->connect_errno);
 }
 
+if (isset($_POST['correo_electronico'])) {
+    $correo_electronico = $_POST['correo_electronico'];
+    
+    // Verificar si el correo electrónico existe en la base de datos
+    $consulta = "SELECT * FROM users WHERE correo_electronico = '$correo_electronico'";
+    $resultado = $conexion->query($consulta);
 
-// Verificar si se ha enviado el formulario
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtener el correo electrónico proporcionado por el usuario
-    $correo_electronico = $_POST["correo_electronico"];
+    if ($resultado->num_rows > 0) {
+        // Generar un token único
+        $token = uniqid();
 
-    // Realizar una consulta para verificar si el correo electrónico existe en la base de datos
-    // (Debes tener una conexión a la base de datos configurada previamente)
-    $sql = "SELECT * FROM users WHERE correo_electronico = '$correo_electronico'";
-    // Ejecutar la consulta y verificar si se encontró un resultado
+        // Guardar el token en la base de datos para este usuario (puedes crear una tabla para tokens)
+        $insertar_token = "INSERT INTO tokens (usuario_id, token) VALUES ('$usuario_id', '$token')";
+        $conexion->query($insertar_token);
 
-    if ($conexion->query($sql)->num_rows == 1) {
-        // Generar un token único y asociarlo al correo electrónico (esto es un ejemplo simplificado)
-        $token = bin2hex(random_bytes(16));
+        // Envía un correo electrónico al usuario con un enlace a changepassword.html que incluya el token
+        $link = "http://localhost/proyectoanalisis/changepassword.html?token=$token";
+        $mensaje = "Haga clic en el siguiente enlace para cambiar su contraseña: $link";
+        mail($correo_electronico, "Recuperación de contraseña", $mensaje);
 
-        // Guardar el token en la base de datos junto con una marca de tiempo de expiración
-
-        // Enviar un correo electrónico al usuario con un enlace que incluye el token
-        $mensaje = "Haga clic en el siguiente enlace para restablecer su contraseña: ";
-        $mensaje .= "<a href='resetpassword.php?token=$token'>Restablecer Contraseña</a>";
-
-        mail($correo_electronico, "Recuperación de Contraseña", $mensaje);
-
-        // Redirigir al usuario a una página de confirmación
-        header("Location: confirmation.php");
+        // Redirecciona al usuario a una página de confirmación
+        header("Location: changepassword.html");
         exit();
     } else {
-        // El correo electrónico no existe en la base de datos, mostrar un mensaje de error
-        echo "El correo electrónico no existe en nuestros registros.";
+        // El correo electrónico no existe en la base de datos
+        echo "El correo electrónico no está registrado.";
     }
 }
-
-// Cerrar la conexión a la base de datos
-$conexion->close();
 ?>
