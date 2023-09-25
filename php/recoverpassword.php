@@ -27,11 +27,12 @@ if (isset($_POST['correo_electronico'])) {
         $conexion->query($insertar_token);
 
         // Envía un correo electrónico al usuario con un enlace a changepassword.html que incluya el token
-        $link = "http://localhost/proyectoanalisis/changepassword.html?token=$token";
+        $link = "/changepassword.html?token=$token";
         $mensaje = "Haga clic en el siguiente enlace para cambiar su contraseña: $link";
         mail($correo_electronico, "Recuperación de contraseña", $mensaje);
 
-        // Redirecciona al usuario a una página de confirmación
+        
+        // Redirecciona al usuario a una página de changepassword
         header("Location: changepassword.html");
         exit();
     } else {

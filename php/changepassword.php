@@ -19,7 +19,8 @@ if (isset($_POST['token']) && isset($_POST['contrasena'])) {
     $consulta_token = "SELECT * FROM tokens WHERE token = '$token'";
     $resultado_token = $conexion->query($consulta_token);
 
-    if ($resultado_token->num_rows > 0) {
+
+    if ($resultado_token !== false && $resultado_token->num_rows > 0) {
         $fila_token = $resultado_token->fetch_assoc();
         $usuario_id = $fila_token['usuario_id'];
 
@@ -42,3 +43,4 @@ if (isset($_POST['token']) && isset($_POST['contrasena'])) {
     }
 }
 ?>
+
