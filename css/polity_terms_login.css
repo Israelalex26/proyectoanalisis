@@ -1,0 +1,104 @@
+body{
+    background-color: #F6F2EB;
+  }
+  
+  .color_nav{
+      background-color: #E9D5B3; /* Cambia el color de fondo según tus preferencias */
+  
+  }
+  
+  /* Estilos para el header */
+  header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #E9D5B3; /* Cambia el color de fondo según tus preferencias */
+      padding: 10px 20px;
+  }
+  
+  /* Estilos para el logo */
+  .logo img {
+      max-height: 80px; /* Ajusta el tamaño de tu logo según tus necesidades */
+  }
+  
+
+  ._nav1{
+    width: 1130px;
+    height: 1451px;
+    background: url("../images/v10_141.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 178px;
+    left: 299px;
+    overflow: hidden;
+  }
+  
+  .nav10_123{
+    width: 775px;
+    height: 902px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    overflow: hidden;
+  }
+
+  
+  @media screen and (max-width: 768px) {
+      body{
+          background-color: #F6F2EB;
+        }
+        
+        /* Estilos para el header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #E9D5B3; 
+            padding: 10px 20px;
+        }
+        
+        .logo img {
+            max-height: 40px; 
+        }
+
+
+        ._nav1{
+            width: 1130px;
+            height: 1451px;
+            background: url("../images/v10_141.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            opacity: 1;
+            position: absolute;
+            top: 178px;
+            left: 299px;
+            overflow: hidden;
+          }
+          
+          .nav10_123{
+            width: 775px;
+            height: 902px;
+            background: rgba(255,255,255,1);
+            opacity: 1;
+            position: relative;
+            top: 0px;
+            left: 0px;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            overflow: hidden;
+          }
+     
+  }
+  

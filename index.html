@@ -4,6 +4,7 @@
 
 <head>
     
+  <meta charset="UTF-8">
   <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
   <link href="./css/main.css" rel="stylesheet" />
   <title>Nomina PA</title>
@@ -12,7 +13,7 @@
 
 <body>
 
-  <img class="logo_pa"  src="img/logo_pa.png"/>
+  <img class="logo_pa"  src="img/v42_4.png"/>
 
   <nav class="nav1_index">
 
@@ -26,7 +27,7 @@
       con tu cuenta</span> <!--Descripcion de la web-->
 
       <!--Conexion al php-->
-      <form action="php/login.php" method="POST">
+      <form action="php/index.php" method="POST">
 
         <div class="div_correo">
           <label for="correo_electronico" class="label_correo">Correo electrónico</label>
@@ -39,11 +40,13 @@
         <input type="password" id="contrasena" name="contrasena" class="input_password" placeholder="Ingrese su contraseña">
     </div>
 
-    <button class="login_btn">
+    <button class="login_btn" onclick="login()">
         <span class="text_login">Iniciar sesión</span>
     </button>
 
-      </form>
+
+  </form>
+
 
       <button class="recover_btn">
         <a href="recoverpassword.html">
@@ -57,6 +60,8 @@
   </nav>
 
   <span class="v10_199">Copyright @PA 2023 | Privacy Policy</span>
+
+  <script src="js/index.js"></script>
 
 
 </body>

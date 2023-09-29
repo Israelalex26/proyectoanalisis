@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="css/empleado.css" rel="stylesheet" />
+  <title>Nomina PA</title>
+  
+  <!-- Incluye Firebase aquí -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+
+</head>
+
+<body>
+  <header>
+      <div class="logo">
+          <img src="img/v42_4.png" alt="Logo">
+      </div>
+      <nav>
+          <ul>
+
+              <li><a href="inicio.html">Inicio</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Empleado</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="empleado.html">Empleado</a></li>
+                  <li><a class="dropdown-item" href="#">Expediente Empleado</a></li>
+                  <li><a class="dropdown-item" href="#">Plsnilla</a></li>
+                  <li><a class="dropdown-item" href="#">Hora extra</a></li>
+                  <li><a class="dropdown-item" href="#">Bono 14</a></li>
+                  <li><a class="dropdown-item" href="#">Aguinaldo</a></li>
+                  <li><a class="dropdown-item" href="#">Salario</a></li>
+                  <li><a class="dropdown-item" href="#">Salario</a></li>
+
+
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Pólizas</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Polizas</a></li>
+                  <li><a class="dropdown-item" href="#">Tipo de Poliza</a></li>
+                  <li><a class="dropdown-item" href="#">Anticipo salario</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Tienda Solidarista</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Ventas</a></li>
+                  <li><a class="dropdown-item" href="#">Producto</a></li>
+                  <li><a class="dropdown-item" href="#">Producción</a></li>
+                  <li><a class="dropdown-item" href="#">Comisión</a></li>
+                  <li><a class="dropdown-item" href="#">Piezas</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Ajustes</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Cambiar contraseña</a></li>
+                  <li><a class="dropdown-item" href="#">Editar usuario</a></li>
+                  <li><a class="dropdown-item" href="#">Politica y Privacidad</a></li>
+                </ul>
+              </li>
+
+          </ul>
+      </nav>
+
+  
+    </header>
+
+  <nav class="nav1">
+
+    <div class="nav10_123">
+    </div>
+
+    <span class="title">Agregar empleado</span> <!--titulo de la web-->
+  
+    <form >
+
+
+    <div class="div_nombre">
+      <label for="nombre_completo" class="label_nombre">Nombre del empleado</label>
+      <input type="text" id="nombre_completo" name="nombre_completo" class="input_nombre" placeholder="Ingrese el nombre completo del empleado">
+  </div>
+
+  <div class="div_email">
+    <label for="correo_eñectronico" class="label_email">Correo electronico</label>
+    <input type="email" id="correo_eñectronico" name="correo_eñectronico" class="input_email" placeholder="Ingrese el correo electronico">
+</div>
+
+<div class="div_telefono">
+  <label for="numero_telefono" class="label_telefono">Número de telefono</label>
+  <input type="number" id="numero_telefono" name="numero_telefono" class="input_telefono" placeholder="Ingresa el número de telefono">
+</div>
+
+<div class="div_Conyuge">
+  <label for="Conyuge" class="label_Conyuge">Cónyuge</label>
+  <input type="text" id="Cónyuge" name="Conyuge" class="input_Conyuge" placeholder="Ingresa el nombre completo del cónyuge (opcional)">
+</div>
+
+<div class="div_jornada">
+  <label for="jornada" class="label_jornada">Jornada</label>
+  <input type="text" id="jornada" name="jornada" class="input_jornada" placeholder="Ingresa la jornada del empleado">
+</div>
+
+<div class="div_activo">
+  <label for="activo" class="label_activo">Activo</label>
+  <input type="text" id="activo" name="activo" class="input_activo" placeholder="Ingresa el activo del empleado">
+</div>
+
+<div class="div_expediente">
+  <label for="expediente" class="label_expediente">Expediente</label>
+  <input type="text" id="expediente" name="expediente" class="input_expediente">
+</div>
+
+<button class="expediente_btn">
+  <div class="v150_29"></div>
+  <span class="v150_30">Elegir archivo</span>
+</button>
+
+<div class="div_foto">
+  <label for="foto" class="label_foto">Foto</label>
+  <input type="text" id="foto" name="foto" class="input_foto">
+</div>
+
+<button class="foto_btn" onclick="seleccionarfoto()">
+  <div class="v150_33"></div>
+  <span class="v150_34">Elegir foto</span>
+</button>
+
+
+<button class="v150_35">
+  <span class="v150_36">Cancelar</span>
+</button>
+
+
+<button class="v150_40">
+  <span class="v150_41">Guardar</span>
+</button>
+
+</form>
+
+
+  </nav>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+      <script src="js/foto_empleado.js"></script>  
+
+
+</body>
+
+</html>

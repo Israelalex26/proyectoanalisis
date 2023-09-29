@@ -18,21 +18,22 @@ $nombre_usuario = $_POST['nombre_usuario'];
 $contrasena = $_POST['contrasena'];
 
 // Modificar la estructura de la tabla para hacer que "id_users" sea autoincremental
-$alterTableSql = "ALTER TABLE users MODIFY COLUMN id_users INT AUTO_INCREMENT";
+$alterTableSql = "ALTER TABLE users MODIFY COLUMN id_user INT AUTO_INCREMENT";
 
 if ($conn->query($alterTableSql) === TRUE) {
     // Ahora, la columna "id_users" está configurada como autoincremental
 
     // Insertar datos en la tabla "users" sin especificar un valor para "id_users"
-    $sql = "INSERT INTO users (correo_electronico, nombre_usuario, contrasena, rol) VALUES ('$correo_electronico', '$nombre_usuario', '$contrasena', 'rol_por_defecto')";
+    $sql = "INSERT INTO users (correo_electronico, nombre_usuario, contrasena, rol) VALUES ('$correo_electronico', '$nombre_usuario', '$contrasena', 'pendiente')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Registro exitoso. ¡Bienvenido!";
+        echo '<script>alert("Registro existoso, Espere un momento."); window.location.href = "http://localhost/recuperarcontrasena/index.html";</script>';
+
     } else {
-        echo "Error al registrar usuario: " . $conn->error;
+        echo '<script>alert("Error al registrar usuario:"); window.location.href = "http://localhost/recuperarcontrasena/register.html";</script>';
     }
 } else {
-    echo "Error al modificar la tabla: " . $conn->error;
+    echo '<script>alert("Error al modificar la tabla:"); window.location.href = "http://localhost/recuperarcontrasena/register.html";</script>';
 }
 
 // Cerrar la conexión a la base de datos
