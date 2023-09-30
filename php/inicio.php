@@ -4,7 +4,7 @@ session_start(); // Inicia la sesión para manejar variables de sesión
 $server = "localhost";
 $user = "root";
 $pass = "";
-$db = "nomina";
+$db = "prueba";
 
 // Establece la conexión a la base de datos
 $conexion = new mysqli($server, $user, $pass, $db);

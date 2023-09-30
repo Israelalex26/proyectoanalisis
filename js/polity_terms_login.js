@@ -18,11 +18,13 @@ function login(){
     } else if(passwordtv.length >16){
         alert('La contraseña debe de tener un máximo de 16 caracteres');
         return;
-    } else{
-        alert('h');
     }
 }
 
+
+function register(){
+    window.location.href = "register.html";
+}
 
 function validateEmail(emailtv) {
     // Validación básica de correo electrónico
