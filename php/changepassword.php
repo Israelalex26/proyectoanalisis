@@ -38,13 +38,15 @@ if (isset($_POST['token']) && isset($_POST['contrasena'])) {
             $conexion->query($eliminar_token);
 
             // Muestra un mensaje de éxito y redirige a una página específica
-            echo '<script>alert("Se modifico la contraseña"); window.location.href = "http://localhost/recuperarcontrasena/index.html";</script>';
+            echo '<script>alert("Se modifico la contraseña"); window.location.href = "http://localhost/proyectoanalisis/index.html";</script>';
 
             // Sale del script
             exit();
         } else {
             // Si hay un error en la actualización de la contraseña
             echo "Error al actualizar la contraseña.";
+             echo '<script>alert("Error al actualizar la contraseña:"); window.location.href = "http://localhost/proyectoanalisis/changepassword.html";</script>';
+
         }
     } else {
         // Si el token no es válido o no existe en la base de datos

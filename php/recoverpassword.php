@@ -31,16 +31,16 @@ if (isset($_POST['correo_electronico'])) {
         $conexion->query($insertar_token);
 
         // Envía un correo electrónico al usuario con un enlace a changepassword.html que incluya el token
-        $link = "/recuperarcontrasena/changepassword.html?token=$token";
+        $link = "/proyectoanalisis/changepassword.html?token=$token";
         $mensaje = "Haga clic en el siguiente enlace para cambiar su contraseña: $link";
         mail($correo_electronico, "Recuperación de contraseña", $mensaje);
 
         // Redirecciona al usuario a una página de changepassword
-        echo '<script>window.location.href = "http://localhost/recuperarcontrasena/changepassword.html";</script>';
+        echo '<script>window.location.href = "http://localhost/proyectoanalisis/changepassword.html";</script>';
 
     } else {
         // El correo electrónico no existe en la base de datos
-        echo '<script>alert("El correo electrónico no está registrado."); window.location.href = "http://localhost/recuperarcontrasena/recoverpassword.html";</script>';
+        echo '<script>alert("El correo electrónico no está registrado."); window.location.href = "http://localhost/proyectoanalisis/recoverpassword.html";</script>';
     }
 }
 ?>
