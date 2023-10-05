@@ -109,12 +109,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->fetch();
 
         // Redirige según el rol
-        if ($rol == "admin") {
+        if ($rol == "Admin") {
             echo '<script>window.location.href = "http://localhost/proyectoanalisis/inicio.php";</script>';
-        } elseif ($rol == "trabajador") {
+        } elseif ($rol == "Trabajador") {
             echo '<script>window.location.href = "http://localhost/proyectoanalisis/iniciotrabajador.php";</script>';
-        } elseif ($rol == "pendiente") {
+        } elseif ($rol == "Pendiente") {
             echo '<script>alert("Este usuario no está autorizado, espere un momento."); window.location.href = "http://localhost/proyectoanalisis/index.php";</script>';
+        } elseif ($rol == "Jefe"){
+            echo '<script>window.location.href = "http://localhost/proyectoanalisis/inicio.php";</script>';
         }
     } else {
         // Las credenciales son inválidas

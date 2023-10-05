@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "id21355203_nomina";
-$password = "NominaProyecto@#2";
-$dbname = "id21355203_nomina";
+$username = "root";
+$password = "";
+$dbname = "nomina";
 
 // Conexión a la base de datos
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -107,70 +107,17 @@ $result = $conn->query($sql);
 
     <script>
       
-      function editarEmpleado(codEmpleado) {
-        // Obtener el elemento del cuerpo del documento
-        var body = document.getElementsByTagName("body")[0];
-
-        // Crear un contenedor para el formulario
-        var formContainer = document.createElement("div");
-        formContainer.className = "container my-4";
-
-        // Crear un formulario
-        var form = document.createElement("form");
-
-        // Crear un dropdown para seleccionar el rol
-        var rolDropdown = document.createElement("select");
-        rolDropdown.className = "form-select mb-3";
-        rolDropdown.name = "rol";
-        rolDropdown.innerHTML = `
-            <option selected>Selecciona un rol</option>
-            <option value="trabajador">Trabajador</option>
-            <option value="admin">Admin</option>
-            <option value="jefe">Jefe</option>
-            <option value="pendiente">Pendiente</option>
-        `;
-
-        // Crear input para modificar correo electrónico
-        var correoInput = document.createElement("input");
-        correoInput.className = "form-control mb-3";
-        correoInput.type = "email";
-        correoInput.name = "correo_electronico";
-        correoInput.placeholder = "Nuevo correo electrónico";
-
-        // Crear input para modificar nombre de usuario
-        var usuarioInput = document.createElement("input");
-        usuarioInput.className = "form-control mb-3";
-        usuarioInput.type = "text";
-        usuarioInput.name = "nombre_usuario";
-        usuarioInput.placeholder = "Nuevo nombre de usuario";
-
-        // Crear botón de guardar cambios
-        var guardarButton = document.createElement("button");
-        guardarButton.className = "btn btn-primary";
-        guardarButton.type = "submit";
-        guardarButton.textContent = "Guardar cambios";
-
-        // Agregar elementos al formulario
-        form.appendChild(rolDropdown);
-        form.appendChild(correoInput);
-        form.appendChild(usuarioInput);
-        form.appendChild(guardarButton);
-
-        // Agregar formulario al contenedor
-        formContainer.appendChild(form);
-
-        // Agregar contenedor al cuerpo del documento
-        body.appendChild(formContainer);
-
-        console.log("Editar empleado con código: " + codEmpleado);
-    }
-
-
+  
         function borrarEmpleado(codEmpleado) {
             // Implementa aquí la lógica para borrar un empleado
             // Puedes redirigir a otra página para confirmar el borrado o mostrar un modal, etc.
             console.log("Borrar empleado con código: " + codEmpleado);
         }
+
+        function editarEmpleado(codEmpleado) {
+            window.location.href = "modificar_usuario.php?id=" + codEmpleado;
+        }
+
 
         
     </script>
