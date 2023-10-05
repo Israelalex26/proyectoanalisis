@@ -43,15 +43,24 @@ nav ul li a {
     font-weight: bold;
 }
 
-/* Estilos para el botón */
-.boton a {
-    text-decoration: none;
-    background-color: #D99C53; /* Cambia el color de fondo según tus preferencias */
-    color: #000; /* Cambia el color de texto según tus preferencias */
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: bold;
+
+table {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 20px;
+    background-color: #D99C53;
 }
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #ECECEC;
+}
+
 
 
 @media screen and (max-width: 768px) {
@@ -94,16 +103,6 @@ nav ul li a {
           font-weight: bold;
       }
       
-      /* Estilos para el botón */
-      .boton a {
-        text-decoration: none;
-        background-color: #D99C53; /* Cambia el color de fondo según tus preferencias */
-        color: #000; /* Cambia el color de texto según tus preferencias */
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-weight: bold;
-      }
-
       
       
 }
