@@ -49,7 +49,7 @@
 
 
       <button class="recover_btn">
-        <a href="recoverpassword.html">
+        <a href="recoverpassword.php">
             <span class="recover_text">¿Olvidaste tu contraseña?</span>
         </a>
       </button>

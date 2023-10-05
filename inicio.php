@@ -96,6 +96,7 @@ $result = $conn->query($sql);
                 echo "<td>
                         <button onclick='editarEmpleado(\"" . $row["id_usuario"] . "\")'>Editar</button>
                         <button onclick='borrarEmpleado(\"" . $row["id_usuario"] . "\")'>Borrar</button>
+                        <button onclick='restablerContrasena(\"" . $row["id_usuario"] . "\")'>Restablecer contraseña</button>
                       </td>";
                 echo "</tr>";
             }
@@ -109,13 +110,18 @@ $result = $conn->query($sql);
       
   
         function borrarEmpleado(codEmpleado) {
-            // Implementa aquí la lógica para borrar un empleado
-            // Puedes redirigir a otra página para confirmar el borrado o mostrar un modal, etc.
-            console.log("Borrar empleado con código: " + codEmpleado);
+            if (confirm("¿Estás seguro que deseas eliminar este usuario?")) {
+                window.location.href = "eliminar_usuario.php?id=" + userId;
+            }
         }
 
         function editarEmpleado(codEmpleado) {
             window.location.href = "modificar_usuario.php?id=" + codEmpleado;
+        }
+
+        function restablerContrasena(codEmpleado){
+            window.location.href = "php/restablecercontrasena.php?id=" + codEmpleado;
+            
         }
 
 

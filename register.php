@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       // Ahora, la columna "id_users" está configurada como autoincremental
 
       // Insertar datos en la tabla "users" sin especificar un valor para "id_users"
-      $sql = "INSERT INTO usuarios (correo_electronico, nombre_usuario, contrasena, rol) VALUES ('$correo_electronico', '$nombre_usuario', '$contrasena', 'pendiente')";
+      $sql = "INSERT INTO usuarios (correo_electronico, nombre_usuario, contrasena, rol) VALUES ('$correo_electronico', '$nombre_usuario', '$contrasena', 'Pendiente')";
 
       if ($conn->query($sql) === TRUE) {
           echo '<script>alert("Registro exitoso, Espere un momento."); window.location.href = "http://localhost/proyectoanalisis/index.php";</script>';
