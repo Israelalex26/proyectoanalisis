@@ -12,7 +12,7 @@ if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
-// Consulta SQL para obtener los datos de la tabla "empleado"
+// Consulta SQL para obtener los datos de la tabla "usuarios"
 $sql = "SELECT id_usuario, correo_electronico, rol, nombre_usuario FROM usuarios";
 $result = $conn->query($sql);
 ?>
@@ -27,11 +27,10 @@ $result = $conn->query($sql);
     <link href="./css/inicio.css" rel="stylesheet" />
     <title>Nomina PA</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
 </head>
 
 <body>
-    <form action="php/inicio.php" method="POST">
+    <form action="index.php" method="POST">
         <header>
             <div class="logo">
                 <img src="img/v42_4.png" alt="Logo">
@@ -76,6 +75,14 @@ $result = $conn->query($sql);
         </header>
     </form>
 
+    <!-- Formulario de búsqueda -->
+    <form action="" method="GET" class="my-3">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Buscar por usuario o correo electrónico" name="search" aria-label="Buscar" aria-describedby="btnBuscar">
+            <button class="btn btn-outline-secondary" type="submit" id="btnBuscar">Buscar</button>
+        </div>
+    </form>
+
     <table>
         <tr>
             <th>ID Usuario</th>
@@ -85,7 +92,7 @@ $result = $conn->query($sql);
             <th>Acciones</th>
         </tr>
         <?php
-        // Mostrar los datos obtenidos de la tabla "empleado"
+        // Mostrar los datos obtenidos de la tabla "usuarios"
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
@@ -107,9 +114,7 @@ $result = $conn->query($sql);
     </table>
 
     <script>
-      
-  
-        function borrarEmpleado(codEmpleado) {
+        function borrarEmpleado(userId) {
             if (confirm("¿Estás seguro que deseas eliminar este usuario?")) {
                 window.location.href = "eliminar_usuario.php?id=" + userId;
             }
@@ -119,13 +124,9 @@ $result = $conn->query($sql);
             window.location.href = "modificar_usuario.php?id=" + codEmpleado;
         }
 
-        function restablerContrasena(codEmpleado){
+        function restablerContrasena(codEmpleado) {
             window.location.href = "php/restablecercontrasena.php?id=" + codEmpleado;
-            
         }
-
-
-        
     </script>
 
     <?php
@@ -133,9 +134,7 @@ $result = $conn->query($sql);
     $conn->close();
     ?>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 
 </html>
