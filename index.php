@@ -73,7 +73,7 @@ session_start();
 $server = "localhost";
 $user = "root";
 $pass = "";
-$db = "nomina";
+$db = "id21355203_nomina";
 
 // Establece la conexión a la base de datos
 $conexion = new mysqli($server, $user, $pass, $db);

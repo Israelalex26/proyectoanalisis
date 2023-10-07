@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $servername = "localhost";
             $username = "root";
             $password = "";
-            $dbname = "nomina";
+            $dbname = "id21355203_nomina";
 
             // Crear conexión
             $conn = new mysqli($servername, $username, $password, $dbname);
