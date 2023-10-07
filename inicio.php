@@ -12,8 +12,14 @@ if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
-// Consulta SQL para obtener los datos de la tabla "usuarios"
-$sql = "SELECT id_usuario, correo_electronico, rol, nombre_usuario FROM usuarios";
+// Definir la variable de búsqueda
+$search = "";
+if (isset($_GET['search'])) {
+    $search = $_GET['search'];
+}
+
+// Consulta SQL para obtener los datos de la tabla "usuarios" con filtro por correo electrónico o nombre de usuario
+$sql = "SELECT id_usuario, correo_electronico, rol, nombre_usuario FROM usuarios WHERE correo_electronico LIKE '%$search%' OR nombre_usuario LIKE '%$search%'";
 $result = $conn->query($sql);
 ?>
 
