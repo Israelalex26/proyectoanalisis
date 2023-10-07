@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           echo '<script>alert("Error al registrar usuario:"); window.location.href = "http://localhost/proyectoanalisis/register.php";</script>';
       }
   } else {
-      echo '<script>alert("Error al modificar la tabla:"); window.location.href = "http://localhost/proyectoanalisis/register.pgp";</script>';
+      echo '<script>alert("Error al modificar la tabla:"); window.location.href = "http://localhost/proyectoanalisis/register.php";</script>';
   }
 
 

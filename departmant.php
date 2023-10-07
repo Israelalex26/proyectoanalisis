@@ -23,12 +23,12 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><input type="text" class="form-control" placeholder="Ingrese el nombre del departamento"></td>
-                    <td><input type="number" class="form-control" placeholder="Ingrese el número de piso"></td>
+                    <td><input id="departmant" name="departmant" type="text" class="form-control" placeholder="Ingrese el nombre del departamento"></td>
+                    <td><input type="number" id="piso" name="piso" class="form-control" placeholder="Ingrese el número de piso"></td>
                 </tr>
             </tbody>
         </table>
-        <button class="btn btn-primary">Agregar Departamento</button>
+        <button type="submit" class="btn btn-primary">Agregar Departamento</button>
 
         </form>
        
@@ -42,4 +42,47 @@
 </html>
 
 
+<?php
 
+//Establece  la conexion  a la base de datos
+
+$server = "localhost";
+$user = "root";
+$pass = "";
+$db = "id21355203_nomina";
+
+// Crear una conexión a la base de datos
+$conn = new mysqli($server, $user, $pass, $db);
+
+// Verificar la conexión
+if ($conn->connect_error) {
+    die("La conexión a la base de datos falló: " . $conn->connect_error);
+}
+
+
+// Verifica si la solicitud es de tipo POST
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    //obten los datos del formulario
+    $departmant = $_POST["departmant"];
+    $piso = $_POST["piso"];
+
+    //Verifica que todos los campos esten llenos
+    if(empty($departmant) || empty($piso)){
+        echo  'llenar los campos';
+    }else{
+        //insertar los datos en la tabla departmant
+        $sql_departmant = "INSERT INTO departmant (departmant, piso) VALUES ('$departmant', '$piso');";
+
+        if ($conn->query($sql_departmant) === TRUE) {
+            echo '<script>alert("Departamento agregado correctamente."); window.location.href = "http://localhost/proyectoanalisis/ejemplo.php";</script>';
+        } else {
+            echo '<script>alert("Error al subir a la DB"); window.location.href = "http://localhost/proyectoanalisis/departmant.php";</script>';
+        }
+
+    }
+
+}
+
+$conn->close();
+
+?>
