@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
   if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
 
-    echo '<form action="php/guardar_modificacion.php" method="POST">
+    echo '<form action="guardar_modificacion.php" method="POST">
             <input type="hidden" name="user_id" value="' . $row['id_usuario'] . '">
 
             <div class="form-group">

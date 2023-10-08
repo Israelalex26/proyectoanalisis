@@ -1,0 +1,475 @@
+body{
+    background-color: #F6F2EB;
+  }
+  
+  .color_nav{
+      background-color: #E9D5B3; /* Cambia el color de fondo según tus preferencias */
+  
+  }
+  
+  /* Estilos para el header */
+  header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #E9D5B3; /* Cambia el color de fondo según tus preferencias */
+      padding: 10px 20px;
+  }
+  
+  /* Estilos para el logo */
+  .logo img {
+      max-height: 80px; /* Ajusta el tamaño de tu logo según tus necesidades */
+  }
+  
+  /* Estilos para la navegación */
+  nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+  }
+  
+  nav ul li {
+      margin-right: 20px; /* Espaciado entre elementos del menú */
+  }
+  
+  nav ul li:last-child {
+      margin-right: 0; /* Elimina el espaciado del último elemento */
+  }
+  
+  nav ul li a {
+      text-decoration: none;
+      color: #000; /* Cambia el color de texto según tus preferencias */
+      font-weight: bold;
+  }
+
+
+  .nav1{
+    width: 807px;
+    height: 572px;
+    background: url("../images/v10_141.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 178px;
+    left: 455px;
+    overflow: hidden;
+  }
+  
+  .nav10_123{
+    width: 807px;
+    height: 572px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    overflow: hidden;
+  }
+  
+
+  .title{
+    width: 447px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 50px;
+    left: 185px;
+    font-family: Inter;
+    font-weight: Bold;
+    font-size: 40px;
+    opacity: 1;
+    text-align: left;
+}
+
+
+.div_departamento{
+    width: 500px;
+    height: 94px;
+    background: url("../images/v10_128.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    margin: 7px;
+    opacity: 1;
+    position: absolute;
+    top: 139px;
+    left: 154px;
+    overflow: hidden; 
+  }
+  .label_departamento{
+    width: 147px;
+    color: rgba(0,0,0,1);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 14px;
+    opacity: 1;
+    text-align: left;
+  }
+  .input_departamento{
+    width: 485px;
+    height: 65px;
+    background: rgba(217,217,217,0);
+    opacity: 1;
+    position: absolute;
+    top: 24px;
+    left: 0px;
+    border: 1px solid rgba(193,193,193,1);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    overflow: hidden;
+  }
+
+
+
+  .div_piso{
+    width: 500px;
+    height: 94px;
+    background: url("../images/v10_128.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    margin: 7px;
+    opacity: 1;
+    position: absolute;
+    top: 256px;
+    left: 154px;
+    overflow: hidden; 
+  }
+  .label_piso{
+    width: 147px;
+    color: rgba(0,0,0,1);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 14px;
+    opacity: 1;
+    text-align: left;
+  }
+  .input_piso{
+    width: 485px;
+    height: 65px;
+    background: rgba(217,217,217,0);
+    opacity: 1;
+    position: absolute;
+    top: 24px;
+    left: 0px;
+    border: 1px solid rgba(193,193,193,1);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    overflow: hidden;
+  }
+
+ 
+  .v150_35 {
+    width: 240px;
+    height: 60px;
+    background: url("../images/v150_35.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    border-radius: 10px;
+    position: absolute;
+    top: 391px;
+    left: 164px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
+  }
+  .v150_36 {
+    width: 78px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 19px;
+    left: 81px;
+    font-family: Inter;
+    font-weight: Semi Bold;
+    font-size: 18px;
+    opacity: 1;
+    text-align: center;
+  }
+
+
+  .v150_40 {
+    width: 240px;
+    height: 60px;
+    background: rgba(254,200,135,1);
+    opacity: 1;
+    position: absolute;
+    top: 391px;
+    left: 414px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
+  }
+  .v150_41 {
+    width: 71px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 19px;
+    left: 84px;
+    font-family: Inter;
+    font-weight: Semi Bold;
+    font-size: 18px;
+    opacity: 1;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 768px){
+
+    body{
+      background-color: #F6F2EB;
+    }
+    
+    .color_nav{
+        background-color: #E9D5B3; /* Cambia el color de fondo según tus preferencias */
+    
+    }
+    
+    /* Estilos para el header */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #E9D5B3; /* Cambia el color de fondo según tus preferencias */
+        padding: 10px 20px;
+    }
+    
+    /* Estilos para el logo */
+    .logo img {
+        max-height: 40px; /* Ajusta el tamaño de tu logo según tus necesidades */
+    }
+    
+    /* Estilos para la navegación */
+    nav ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+    
+    nav ul li {
+        margin-right: 20px; /* Espaciado entre elementos del menú */
+    }
+    
+    nav ul li:last-child {
+        margin-right: 0; /* Elimina el espaciado del último elemento */
+    }
+    
+    nav ul li a {
+        text-decoration: none;
+        color: #000; /* Cambia el color de texto según tus preferencias */
+        font-weight: bold;
+    }
+  
+  
+    .nav1{
+      width: 380px;
+      height: 431px;
+      background: url("../images/v10_141.png");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      opacity: 1;
+      position: absolute;
+      top: 100px;
+      left: 30px;
+      overflow: hidden;
+    }
+    
+    .nav10_123{
+      width: 380px;
+      height: 431px;
+      background: rgba(255,255,255,1);
+      opacity: 1;
+      position: relative;
+      top: 0px;
+      left: 0px;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      overflow: hidden;
+    }
+    
+  
+    .title{
+      width: 199px;
+      color: rgba(0,0,0,1);
+      position: absolute;
+      top: 39px;
+      left: 90px;
+      font-family: Inter;
+      font-weight: Bold;
+      font-size: 18px;
+      opacity: 1;
+      text-align: left;
+  }
+  
+  
+  .div_departamento{
+      width: 330px;
+      height: 94px;
+      background: url("../images/v10_128.png");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      margin: 7px;
+      opacity: 1;
+      position: absolute;
+      top: 80px;
+      left: 30px;
+      overflow: hidden; 
+    }
+    .label_departamento{
+      width: 147px;
+      color: rgba(0,0,0,1);
+      position: relative;
+      top: 0px;
+      left: 0px;
+      font-family: Inter;
+      font-weight: Regular;
+      font-size: 14px;
+      opacity: 1;
+      text-align: left;
+    }
+    .input_departamento{
+      width: 300px;
+      height: 55px;
+      background: rgba(217,217,217,0);
+      opacity: 1;
+      position: absolute;
+      top: 24px;
+      left: 0px;
+      border: 1px solid rgba(193,193,193,1);
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      overflow: hidden;
+    }
+  
+  
+  
+    .div_piso{
+      width: 330px;
+      height: 94px;
+      background: url("../images/v10_128.png");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      margin: 7px;
+      opacity: 1;
+      position: absolute;
+      top: 193px;
+      left: 30px;
+      overflow: hidden; 
+    }
+    .label_piso{
+      width: 147px;
+      color: rgba(0,0,0,1);
+      position: relative;
+      top: 0px;
+      left: 0px;
+      font-family: Inter;
+      font-weight: Regular;
+      font-size: 14px;
+      opacity: 1;
+      text-align: left;
+    }
+    .input_piso{
+      width: 300px;
+      height: 55px;
+      background: rgba(217,217,217,0);
+      opacity: 1;
+      position: absolute;
+      top: 24px;
+      left: 0px;
+      border: 1px solid rgba(193,193,193,1);
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      overflow: hidden;
+    }
+  
+  
+    .v150_35 {
+      width: 160px;
+      height: 45px;
+      background: url("../images/v150_35.png");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      opacity: 1;
+      border-radius: 10px;
+      position: absolute;
+      top: 342px;
+      left: 30px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      overflow: hidden;
+    }
+    .v150_36 {
+      width: 52px;
+      color: rgba(0,0,0,1);
+      position: absolute;
+      top: 15px;
+      left: 54px;
+      font-family: Inter;
+      font-weight: Semi Bold;
+      font-size: 12px;
+      opacity: 1;
+      text-align: center;
+    }
+  
+  
+    .v150_40 {
+      width: 160px;
+      height: 45px;
+      background: rgba(254,200,135,1);
+      opacity: 1;
+      position: absolute;
+      top: 342px;
+      left: 195px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      overflow: hidden;
+    }
+    .v150_41 {
+      width: 47px;
+      color: rgba(0,0,0,1);
+      position: absolute;
+      top: 15px;
+      left: 56px;
+      font-family: Inter;
+      font-weight: Semi Bold;
+      font-size: 12px;
+      opacity: 1;
+      text-align: center;
+    }
+
+  }

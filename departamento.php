@@ -18,8 +18,8 @@ if (isset($_GET['search'])) {
     $search = $_GET['search'];
 }
 
-// Consulta SQL para obtener los datos de la tabla "usuarios" con filtro por correo electrónico o nombre de usuario
-$sql = "SELECT id_usuario, correo_electronico, rol, nombre_usuario FROM usuarios WHERE correo_electronico LIKE '%$search%' OR nombre_usuario LIKE '%$search%'";
+// Consulta SQL para obtener los datos de la tabla "departamento" con filtro por nombre de departamento
+$sql = "SELECT departamento, piso FROM departamento WHERE departamento LIKE '%$search%'";
 $result = $conn->query($sql);
 ?>
 
@@ -85,54 +85,45 @@ $result = $conn->query($sql);
     <!-- Formulario de búsqueda -->
     <form action="" method="GET" class="my-3">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Buscar por usuario o correo electrónico" name="search" aria-label="Buscar" aria-describedby="btnBuscar">
+            <input type="text" class="form-control" placeholder="Buscar por nombre del departamento" name="search" aria-label="Buscar" aria-describedby="btnBuscar">
             <button class="btn btn-outline-secondary" type="submit" id="btnBuscar">Buscar</button>
         </div>
     </form>
 
     <table>
         <tr>
-            <th>ID Usuario</th>
-            <th>Correo Electrónico</th>
-            <th>Rol</th>
-            <th>Nombre Usuario</th>
+            <th>Nombre del Departamento</th>
+            <th>Piso</th>
             <th>Acciones</th>
         </tr>
         <?php
-        // Mostrar los datos obtenidos de la tabla "usuarios"
+        // Mostrar los datos obtenidos de la tabla "departamento"
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
-                echo "<td>" . $row["id_usuario"] . "</td>";
-                echo "<td>" . $row["correo_electronico"] . "</td>";
-                echo "<td>" . $row["rol"] . "</td>";
-                echo "<td>" . $row["nombre_usuario"] . "</td>";
+                echo "<td>" . $row["departamento"] . "</td>";
+                echo "<td>" . $row["piso"] . "</td>";
                 echo "<td>
-                        <button onclick='editarEmpleado(\"" . $row["id_usuario"] . "\")'>Editar</button>
-                        <button onclick='borrarEmpleado(\"" . $row["id_usuario"] . "\")'>Borrar</button>
-                        <button onclick='restablerContrasena(\"" . $row["id_usuario"] . "\")'>Restablecer contraseña</button>
+                        <button onclick='editarDepartamento(\"" . $row["departamento"] . "\")'>Editar</button>
+                        <button onclick='borrarDepartamento(\"" . $row["departamento"] . "\")'>Borrar</button>
                       </td>";
                 echo "</tr>";
             }
         } else {
-            echo "<tr><td colspan='5'>No se encontraron resultados.</td></tr>";
+            echo "<tr><td colspan='3'>No se encontraron resultados.</td></tr>";
         }
         ?>
     </table>
 
     <script>
-        function borrarEmpleado(userId) {
-            if (confirm("¿Estás seguro que deseas eliminar este usuario?")) {
-                window.location.href = "usuario/eliminar_usuario.php?id=" + userId;
+        function borrarDepartamento(nombreDepartamento) {
+            if (confirm("¿Estás seguro que deseas eliminar este departamento?")) {
+                window.location.href = "departamento/eliminar_departamento.php?nombre=" + nombreDepartamento;
             }
         }
 
-        function editarEmpleado(codEmpleado) {
-            window.location.href = "usuario/modificar_usuario.php?id=" + codEmpleado;
-        }
-
-        function restablerContrasena(codEmpleado) {
-            window.location.href = "usuario/restablecercontrasena.php?id=" + codEmpleado;
+        function editarDepartamento(nombreDepartamento) {
+            window.location.href = "departamento/modificar_departamento.php?nombre=" + nombreDepartamento;
         }
     </script>
 

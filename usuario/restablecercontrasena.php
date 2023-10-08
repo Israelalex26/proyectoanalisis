@@ -2,7 +2,7 @@
 $server = "localhost";
 $user = "root";
 $pass = "";
-$db = "nomina";
+$db = "id21355203_nomina";
 
 $conn = new mysqli($server, $user, $pass, $db);
 

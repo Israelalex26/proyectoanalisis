@@ -2,7 +2,7 @@
 $server = "localhost";
 $user = "root";
 $pass = "";
-$db = "nomina";
+$db = "id21355203_nomina";
 
 $conn = new mysqli($server, $user, $pass, $db);
 
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["user_id"])) {
 
   // Verifica que el correo electrónico tenga un formato válido
   if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-    echo "El correo electrónico no tiene un formato válido.";
+    echo '<script>alert("El correo electrónico no tiene un formato válido."); window.location.href = "http://localhost/proyectoanalisis/usuario/modificar_usuario.php";</script>';
     exit();
   }else{
 
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["user_id"])) {
     echo '<script>alert("Los datos se actualizaron correctamente."); window.location.href = "http://localhost/proyectoanalisis/inicio.php";</script>';
 
   } else {
-    echo '<script>alert("Error al actualizar los datos."); window.location.href = "http://localhost/proyectoanalisis/modificar_usuario.php";</script>';
+    echo '<script>alert("Error al actualizar los datos."); window.location.href = "http://localhost/proyectoanalisis/usuario/modificar_usuario.php";</script>';
 
   }
   }
