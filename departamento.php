@@ -61,7 +61,7 @@ $result = $conn->query($sql);
                             Tienda Solidarista</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="ventas.html">Ventas</a></li>
-                            <li><a class="dropdown-item" href="producto.html">Producto</a></li>
+                            <li><a class="dropdown-item" href="producto.php">Producto</a></li>
                             <li><a class="dropdown-item" href="produccion.html">Producción</a></li>
                             <li><a class="dropdown-item" href="comision.html">Comisión</a></li>
                             <li><a class="dropdown-item" href="piezas.html">Piezas</a></li>
@@ -72,7 +72,6 @@ $result = $conn->query($sql);
                             Ajustes</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="changepasswordlogin.html">Cambiar contraseña</a></li>
-                            <li><a class="dropdown-item" href="#">Editar usuario</a></li>
                             <li><a class="dropdown-item" href="#">Politica y Privacidad</a></li>
                         </ul>
                     </li>
@@ -89,6 +88,15 @@ $result = $conn->query($sql);
             <button class="btn btn-outline-secondary" type="submit" id="btnBuscar">Buscar</button>
         </div>
     </form>
+
+    <!-- Botón para agregar departamento con margen -->
+<form action="departamento/agregar_departamento.php" method="GET" style="margin-left: 30px;">
+    <button class="btn btn-outline-secondary" type="submit" style="background-color: #D99C53; color: black;">
+        &#9733; Agregar Departamento
+    </button>
+</form>
+
+
 
     <table>
         <tr>

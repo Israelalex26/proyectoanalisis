@@ -19,49 +19,7 @@
 
 <body>
  
-  <header>
-    <div class="logo">
-        <img src="img/v42_4.png" alt="Logo">
-    </div>
-    <nav>
-        <ul>
-            <li><a href="inicio.php">Inicio</a>
-            </li>
-            <li><a class="dropdown-item" href="empleado.php">Empleado</a></li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Nomina</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Hora extra</a></li>
-                    <li><a class="dropdown-item" href="#">Bono 14</a></li>
-                    <li><a class="dropdown-item" href="#">Aguinaldo</a></li>
-                    <li><a class="dropdown-item" href="#">Departamento</a></li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Tienda Solidarista</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="ventas.html">Ventas</a></li>
-                    <li><a class="dropdown-item" href="producto.html">Producto</a></li>
-                    <li><a class="dropdown-item" href="produccion.html">Producción</a></li>
-                    <li><a class="dropdown-item" href="comision.html">Comisión</a></li>
-                    <li><a class="dropdown-item" href="piezas.html">Piezas</a></li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Ajustes</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="changepasswordlogin.html">Cambiar contraseña</a></li>
-                    <li><a class="dropdown-item" href="#">Editar usuario</a></li>
-                    <li><a class="dropdown-item" href="#">Politica y Privacidad</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-</header>
-
+ 
   <nav class="nav1">
 
     <div class="nav10_123">
@@ -69,7 +27,7 @@
 
     <span class="title">Agregar departamento</span> <!--titulo de la web-->
   
-    <form action="departamento.php" method="POST">
+    <form action="agregar_departamento.php" method="POST">
 
 
     <div class="div_departamento">
@@ -83,16 +41,16 @@
   </div>
 
 
-<button class="v150_35">
-  <span class="v150_36">Cancelar</span>
-</button>
-
-
 <button class="v150_40">
   <span class="v150_41">Guardar</span>
 </button>
 
 </form>
+
+<button class="v150_35" name="cancelar" onclick="window.location.href='http://localhost/proyectoanalisis/departamento.php';">
+  <span class="v150_36">Cancelar</span>
+</button>
+
 
 
   </nav>
@@ -135,7 +93,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //Verifica que todos los campos esten llenos
     if(empty($departamento) || empty($piso)){
 
-        echo '<script>alert("Debes de llenar todos los campos."); window.location.href = "http://localhost/proyectoanalisis/departamento.php";</script>';
+        echo '<script>alert("Debes de llenar todos los campos."); window.location.href = "http://localhost/proyectoanalisis/departamento/agregar_departamento.php";</script>';
 
     }else{
         //insertar los datos en la tabla departmant

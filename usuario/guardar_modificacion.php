@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["user_id"])) {
     echo '<script>alert("Los datos se actualizaron correctamente."); window.location.href = "http://localhost/proyectoanalisis/inicio.php";</script>';
 
   } else {
-    echo '<script>alert("Error al actualizar los datos."); window.location.href = "http://localhost/proyectoanalisis/usuario/modificar_usuario.php";</script>';
+    echo '<div class="alert alert-danger" role="alert">Error al actualizar el producto: ' . $conn->error . '</div>';
 
   }
   }

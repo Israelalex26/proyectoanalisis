@@ -13,13 +13,13 @@ if ($conn->connect_error) {
 }
 
 // Definir la variable de búsqueda
-$search = "";
-if (isset($_GET['search'])) {
-    $search = $_GET['search'];
+$searchName = "";
+if (isset($_GET['searchName'])) {
+    $searchName = $_GET['searchName'];
 }
 
-// Consulta SQL para obtener los datos de la tabla "usuarios" con filtro por correo electrónico o nombre de usuario
-$sql = "SELECT id_usuario, correo_electronico, rol, nombre_usuario FROM usuarios WHERE correo_electronico LIKE '%$search%' OR nombre_usuario LIKE '%$search%'";
+// Consulta SQL para obtener los datos de la tabla "producto" con filtro por nombre
+$sql = "SELECT id_producto, nombre, precio, cantidad FROM producto WHERE nombre LIKE '%$searchName%'";
 $result = $conn->query($sql);
 ?>
 
@@ -36,8 +36,7 @@ $result = $conn->query($sql);
 </head>
 
 <body>
-    <form action="index.php" method="POST">
-        <header>
+<header>
             <div class="logo">
                 <img src="img/v42_4.png" alt="Logo">
             </div>
@@ -77,39 +76,43 @@ $result = $conn->query($sql);
                     </li>
                 </ul>
             </nav>
-            <button type="submit" name="cerrar_sesion" class="btn btn-outline-secondary" onclick="return confirm('¿Está seguro de que desea cerrar sesión?')">Cerrar sesión</button>
         </header>
-    </form>
 
-    <!-- Formulario de búsqueda -->
+    <!-- Formulario de búsqueda por nombre -->
     <form action="" method="GET" class="my-3">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Buscar por usuario o correo electrónico" name="search" aria-label="Buscar" aria-describedby="btnBuscar">
+            <input type="text" class="form-control" placeholder="Buscar por nombre del producto" name="searchName" aria-label="Buscar por nombre">
             <button class="btn btn-outline-secondary" type="submit" id="btnBuscar">Buscar</button>
         </div>
     </form>
 
+    <!-- Botón para agregar producto con margen -->
+    <form action="producto/agregar_producto.php" method="GET" style="margin-left: 30px;">
+        <button class="btn btn-outline-secondary" type="submit" style="background-color: #D99C53; color: black;">
+            &#9733; Agregar producto
+        </button>
+    </form>
+
     <table>
         <tr>
-            <th>ID Usuario</th>
-            <th>Correo Electrónico</th>
-            <th>Rol</th>
-            <th>Nombre Usuario</th>
+            <th>ID Producto</th>
+            <th>Nombre del Producto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
             <th>Acciones</th>
         </tr>
         <?php
-        // Mostrar los datos obtenidos de la tabla "usuarios"
+        // Mostrar los datos obtenidos de la tabla "producto"
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
-                echo "<td>" . $row["id_usuario"] . "</td>";
-                echo "<td>" . $row["correo_electronico"] . "</td>";
-                echo "<td>" . $row["rol"] . "</td>";
-                echo "<td>" . $row["nombre_usuario"] . "</td>";
+                echo "<td>" . $row["id_producto"] . "</td>";
+                echo "<td>" . $row["nombre"] . "</td>";
+                echo "<td>" . $row["precio"] . "</td>";
+                echo "<td>" . $row["cantidad"] . "</td>";
                 echo "<td>
-                        <button onclick='editarEmpleado(\"" . $row["id_usuario"] . "\")'>Editar</button>
-                        <button onclick='borrarEmpleado(\"" . $row["id_usuario"] . "\")'>Borrar</button>
-                        <button onclick='restablerContrasena(\"" . $row["id_usuario"] . "\")'>Restablecer contraseña</button>
+                        <button onclick='editarProducto(" . $row["id_producto"] . ")'>Editar</button>
+                        <button onclick='borrarProducto(" . $row["id_producto"] . ")'>Borrar</button>
                       </td>";
                 echo "</tr>";
             }
@@ -120,18 +123,14 @@ $result = $conn->query($sql);
     </table>
 
     <script>
-        function borrarEmpleado(userId) {
-            if (confirm("¿Estás seguro que deseas eliminar este usuario?")) {
-                window.location.href = "usuario/eliminar_usuario.php?id=" + userId;
+        function borrarProducto(idProducto) {
+            if (confirm("¿Estás seguro que deseas eliminar este producto?")) {
+                window.location.href = "producto/eliminar_producto.php?id=" + idProducto;
             }
         }
 
-        function editarEmpleado(codEmpleado) {
-            window.location.href = "usuario/modificar_usuario.php?id=" + codEmpleado;
-        }
-
-        function restablerContrasena(codEmpleado) {
-            window.location.href = "usuario/restablecercontrasena.php?id=" + codEmpleado;
+        function editarProducto(idProducto) {
+            window.location.href = "producto/modificar_producto.php?id=" + idProducto;
         }
     </script>
 
