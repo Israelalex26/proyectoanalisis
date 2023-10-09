@@ -39,7 +39,7 @@
         </button>
     </form>
 
-    <a href="polity_terms_login.html" class="termsPolicy1">Al registrarte, aceptas los <span class="termsPolicy2">Términos de servicio</span> y la
+    <a href="polity_terms_login.php" class="termsPolicy1">Al registrarte, aceptas los <span class="termsPolicy2">Términos de servicio</span> y la
         <span class="termsPolicy2">Política de privacidad</span>, incluida la política de <span class="termsPolicy2">Uso
             de Cookies</span>.</a>
 

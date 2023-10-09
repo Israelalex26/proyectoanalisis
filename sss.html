@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="css/cambiar_contrasena.css" rel="stylesheet" />
+  <title>Nomina PA</title>
+  
+  <!-- Incluye Firebase aquí -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+
+</head>
+
+<body>
+  <header>
+      <div class="logo">
+          <img src="img/v42_4.png" alt="Logo">
+      </div>
+      <nav>
+          <ul>
+
+              <li><a href="inicio.html">Inicio</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Empleado</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="empleado.html">Empleado</a></li>
+                  <li><a class="dropdown-item" href="#">Expediente Empleado</a></li>
+                  <li><a class="dropdown-item" href="#">Hora extra</a></li>
+                  <li><a class="dropdown-item" href="#">Bono 14</a></li>
+                  <li><a class="dropdown-item" href="#">Aguinaldo</a></li>
+                  <li><a class="dropdown-item" href="#">Salario</a></li>
+                  <li><a class="dropdown-item" href="#">Salario</a></li>
+
+
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Pólizas</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Polizas</a></li>
+                  <li><a class="dropdown-item" href="#">Tipo de Poliza</a></li>
+                  <li><a class="dropdown-item" href="#">Anticipo salario</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Tienda Solidarista</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="ventas.html">Ventas</a></li>
+                  <li><a class="dropdown-item" href="producto.html">Producto</a></li>
+                  <li><a class="dropdown-item" href="produccion.html">Producción</a></li>
+                  <li><a class="dropdown-item" href="comision.html">Comisión</a></li>
+                  <li><a class="dropdown-item" href="piezas.html">Piezas</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Ajustes</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Cambiar contraseña</a></li>
+                  <li><a class="dropdown-item" href="#">Editar usuario</a></li>
+                  <li><a class="dropdown-item" href="#">Politica y Privacidad</a></li>
+                </ul>
+              </li>
+
+          </ul>
+      </nav>
+
+  
+    </header>
+
+  <nav class="nav1">
+
+    <div class="nav10_123">
+    </div>
+
+    <span class="title">Comisión</span> <!--titulo de la web-->
+  
+    <form >
+
+
+    <div class="div_id_comision">
+      <label for="id_comision" class="label_id_comision">ID comisión</label>
+      <input type="number" id="id_comision" name="id_comision" class="input_id_comision" placeholder="Agregar el ID de la comisión">
+  </div>
+
+  <div class="div_rango">
+    <label for="rango" class="label_rango">Rango</label>
+    <input type="number" id="rango" name="rango" class="input_rango" placeholder="Ingresa el rango">
+  </div>
+
+  <div class="div_porcentaje">
+    <label for="porcentaje_comision" class="label_porcentaje">Porcentaje</label>
+    <input type="number" id="porcentaje_comision" name="porcentaje_comision" class="input_porcentaje" placeholder="Ingrese el porcentaje">
+</div>
+
+
+
+<button class="v150_35">
+  <span class="v150_36">Cancelar</span>
+</button>
+
+
+<button class="v150_40">
+  <span class="v150_41">Guardar</span>
+</button>
+
+</form>
+
+
+  </nav>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+      <script src="js/foto_empleado.js"></script>  
+
+
+</body>
+
+</html>

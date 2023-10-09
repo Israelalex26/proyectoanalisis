@@ -60,11 +60,11 @@ $result = $conn->query($sql);
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Tienda Solidarista</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="ventas.html">Ventas</a></li>
+                            <li><a class="dropdown-item" href="ventas.php">Ventas</a></li>
                             <li><a class="dropdown-item" href="producto.php">Producto</a></li>
-                            <li><a class="dropdown-item" href="produccion.html">Producción</a></li>
-                            <li><a class="dropdown-item" href="comision.html">Comisión</a></li>
-                            <li><a class="dropdown-item" href="piezas.html">Piezas</a></li>
+                            <li><a class="dropdown-item" href="produccion.php">Producción</a></li>
+                            <li><a class="dropdown-item" href="comision.php">Comisión</a></li>
+                            <li><a class="dropdown-item" href="piezas.php">Piezas</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">

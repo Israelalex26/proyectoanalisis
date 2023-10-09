@@ -58,6 +58,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["nombre"])) {
             <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>';
 
+        echo '<a href="http://localhost/proyectoanalisis/departamento.php" class="btn btn-secondary">Cancelar</a>';
+
+
 
   } else {
     echo "No se encontró un departamento con ese nombre.";

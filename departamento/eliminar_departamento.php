@@ -22,7 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["nombre"])) {
     echo '<script>alert("Departamento eliminado con éxito."); window.location.href = "http://localhost/proyectoanalisis/departamento.php";</script>';
 
   } else {
-    echo "Error al eliminar el departamento: " . $conn->error;
     echo '<script>alert("Error al eliminar el departamento."); window.location.href = "http://localhost/proyectoanalisis/departamento.php";</script>';
   }
 }
