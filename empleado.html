@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link href="css/ventas.css" rel="stylesheet" />
+  <link href="css/empleado2.css" rel="stylesheet" />
   <title>Nomina PA</title>
   
   <!-- Incluye Firebase aquí -->
@@ -58,11 +58,11 @@
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Tienda Solidarista</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="ventas.php">Ventas</a></li>
-                  <li><a class="dropdown-item" href="producto.php">Producto</a></li>
-                  <li><a class="dropdown-item" href="produccion.php">Producción</a></li>
-                  <li><a class="dropdown-item" href="comision.php">Comisión</a></li>
-                  <li><a class="dropdown-item" href="piezas.php">Piezas</a></li>
+                  <li><a class="dropdown-item" href="ventas.html">Ventas</a></li>
+                  <li><a class="dropdown-item" href="#">Producto</a></li>
+                  <li><a class="dropdown-item" href="#">Producción</a></li>
+                  <li><a class="dropdown-item" href="#">Comisión</a></li>
+                  <li><a class="dropdown-item" href="#">Piezas</a></li>
                 </ul>
               </li>
 
@@ -70,8 +70,9 @@
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Ajustes</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="cambiar_contrasena.php">Cambiar contraseña</a></li>
-                  <li><a class="dropdown-item" href="polity_terms.php">Politica y Privacidad</a></li>
+                  <li><a class="dropdown-item" href="#">Cambiar contraseña</a></li>
+                  <li><a class="dropdown-item" href="#">Editar usuario</a></li>
+                  <li><a class="dropdown-item" href="#">Politica y Privacidad</a></li>
                 </ul>
               </li>
 
@@ -86,29 +87,93 @@
     <div class="nav10_123">
     </div>
 
-    <span class="title">Agregar venta</span> <!--titulo de la web-->
+    <span class="title">Agregar empleado</span> <!--titulo de la web-->
   
     <form >
 
 
-    <div class="div_monto">
-      <label for="monto" class="label_monto">Monto venta</label>
-      <input type="number" id="monto" name="monto" class="input_monto" placeholder="Ingresa en monto de la venta">
+    <div class="div_cod_empleado">
+      <label  class="label_cod_empleado">Codigo del empleado:</label>
+      <input type="text"  name="cod_empleado" class="input_cod_empleado" placeholder="">
   </div>
 
-  <div class="div_descripcion">
-    <label for="descripcion" class="label_descripcion">Descripción</label>
-    <input type="text" id="descripcion" name="descripcion" class="input_descripcion" placeholder="Ingresa una descripcion">
-  </div>
-
-  <div class="div_fecha">
-    <label for="fecha_venta" class="label_fecha">Fecha de venta</label>
-    <input type="date" id="fecha_venta" name="fecha_venta" class="input_fecha" placeholder="Ingrese la fecha de venta">
+  <div class="div_nombre_completo">
+    <label  class="label_nombre_completo">Nombre completo del empleado:</label>
+    <input type="text"  name="nombre_completo" class="input_nombre_completo" placeholder="">
 </div>
 
-<div class="div_id">
-  <label for="id_empleado" class="label_id">ID del empleado</label>
-  <input type="id_empleado" id="id_empleado" name="id_empleado" class="input_id" placeholder="Ingrese el ID del empleado">
+
+<div class="div_correo_electronico">
+    <label  class="label_correo_electronico">Correo electronico:</label>
+    <input type="email"  name="correo_electronico" class="input_correo_electronico" placeholder="">
+</div>
+
+<div class="div_dpi">
+  <label  class="label_dpi">DPI del empleado:</label>
+  <input type="number"  name="dpi" class="input_dpi" placeholder="">
+</div>
+
+
+<div class="div_salario">
+    <label  class="label_salario">Salario del empleado:</label>
+    <input type="number"  name="salario" class="input_salario" placeholder="">
+</div>
+
+<div class="div_numero_telefono">
+  <label  class="label_numero_telefono">Numero de telefono del empleado:</label>
+  <input type="number"  name="numero_telefono" class="input_numero_telefono" placeholder="">
+</div>
+
+
+<div class="div_conyuge">
+    <label  class="label_conyuge">conyuge del empleado (optional):</label>
+    <input type="text"  name="conyuge" class="input_conyuge" placeholder="">
+</div>
+
+<div class="div_jornada">
+  <label  class="label_jornada">jornada:</label>
+  <input type="text"  name="jornada" class="input_jornada" placeholder="">
+</div>
+
+
+<div class="div_activo">
+    <label  class="label_activo">activo:</label>
+    <input type="text"  name="activo" class="input_activo" placeholder="">
+</div>
+
+<div class="div_expediente_empleado">
+  <label  class="label_expediente_empleado">Número de expediente del empleado:</label>
+  <input type="text"  name="expediente_empleado" class="input_expediente_empleado" placeholder="">
+</div>
+
+
+<div class="div_foto_empleado">
+    <label class="label_foto_empleado">Seleccionar foto del empleado:</label>
+    <input type="file" name="foto_empleado" class="input_foto_empleado" placeholder="">
+</div>
+
+
+
+<div class="div_fk_departamento">
+  <label  class="label_fk_departamento">Nombre del departamento:</label>
+  <input type="text"  name="fk_departamento" class="input_fk_departamento" placeholder="">
+</div>
+
+
+<div class="div_fecha_contratacion">
+    <label  class="label_fecha_contratacion">fecha de contratacion del empleado:</label>
+    <input type="date"  name="fecha_contratacion" class="input_fecha_contratacion" placeholder="">
+</div>
+
+<div class="div_cartnet_irtra">
+  <label  class="label_cartnet_irtra">Carnet del irtra:</label>
+  <input type="text"  name="cartnet_irtra" class="input_cartnet_irtra" placeholder="">
+</div>
+
+
+<div class="div_carnet_igss">
+    <label  class="label_carnet_igss">Carnet del IGSS:</label>
+    <input type="text"  name="carnet_igss" class="input_carnet_igss" placeholder="">
 </div>
 
 

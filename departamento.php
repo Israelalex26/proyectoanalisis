@@ -72,7 +72,7 @@ $result = $conn->query($sql);
                             Ajustes</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="changepasswordlogin.html">Cambiar contraseña</a></li>
-                            <li><a class="dropdown-item" href="#">Politica y Privacidad</a></li>
+                            <li><a class="dropdown-item" href="polity_terms.php">Politica y Privacidad</a></li>
                         </ul>
                     </li>
                 </ul>
