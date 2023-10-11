@@ -143,7 +143,7 @@ body{
     opacity: 1;
     position: absolute;
     top: 139px;
-    left: 748px;
+    left: 785px;
     overflow: hidden; 
   }
   .label_nombre_completo{
@@ -230,7 +230,7 @@ body{
     opacity: 1;
     position: absolute;
     top: 256px;
-    left: 748px;
+    left: 785px;
     overflow: hidden; 
   }
   .label_dpi{
@@ -316,7 +316,7 @@ body{
     opacity: 1;
     position: absolute;
     top: 375px;
-    left: 748px;
+    left: 785px;
     overflow: hidden; 
   }
   .label_numero_telefono{
@@ -402,7 +402,7 @@ body{
     opacity: 1;
     position: absolute;
     top: 492px;
-    left: 749px;
+    left: 785px;
     overflow: hidden; 
   }
   .label_jornada{
@@ -488,7 +488,7 @@ body{
     opacity: 1;
     position: absolute;
     top: 609px;
-    left: 749px;
+    left: 785px;
     overflow: hidden; 
   }
   .label_expediente_empleado{
@@ -575,7 +575,7 @@ body{
     opacity: 1;
     position: absolute;
     top: 726px;
-    left: 749px;
+    left: 785px;
     overflow: hidden; 
   }
   .label_fk_departamento{
@@ -662,7 +662,7 @@ body{
     opacity: 1;
     position: absolute;
     top: 843px;
-    left: 749px;
+    left: 785px;
     overflow: hidden; 
   }
   .label_cartnet_irtra{
@@ -795,3 +795,19 @@ body{
     text-align: center;
   }
 
+
+  .foto_btn {
+    width: 117px;
+    height: 42px;
+    background: url("../images/v150_32.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: 1px solid rgba(185,185,185,1);
+    border-radius: 5px;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 764px;
+    left: 661px;
+    overflow: hidden;
+  }

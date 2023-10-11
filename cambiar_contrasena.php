@@ -123,8 +123,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Contraseña actual es válida, puedes continuar con el procesamiento.
                     // Aquí puedes agregar el código para actualizar la contraseña en la base de datos.
 
+                    //Para incriptar la contraseña
+                    $hashed_password = password_hash($contrasena_actual, PASSWORD_DEFAULT);
+
                     // Actualizar la contraseña en la base de datos
-                    $sql = "UPDATE usuarios SET contrasena = '$contrasena_nueva' WHERE id_usuario = $id_usuario_actual";
+                    $sql = "UPDATE usuarios SET contrasena = '$hashed_password' WHERE id_usuario = $id_usuario_actual";
 
                     if ($conn->query($sql) === TRUE) {
                         echo '<div class="alert alert-success" role="alert">La contraseña se actualizó correctamente.</div>';
