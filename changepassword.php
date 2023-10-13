@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $hashed_password = password_hash($nueva_contrasena, PASSWORD_DEFAULT);
 
                 // Actualizar la contraseña en la base de datos
-                $sql = "UPDATE usuarios SET contrasena = '$hashed_password' WHERE id_usuario = $id_usuario";
+                $sql = "UPDATE usuarios SET contrasena = '$nueva_contrasena' WHERE id_usuario = $id_usuario";
 
                 if ($conn->query($sql) === TRUE) {
                     echo '<script>alert("Contraseña cambiada exitosamente."); window.location.href = "http://localhost/proyectoanalisis/index.php";</script>';

@@ -79,7 +79,7 @@ $db = "id21355203_nomina";
 $conexion = new mysqli($server, $user, $pass, $db);
 
 // Verifica si hay errores en la conexión
-if ($conexion->connect_error) {
+if ($conexion->connect_error){
     die("Conexion Fallida: " . $conexion->connect_error);
 }
 
@@ -88,49 +88,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $correo_electronico = $_POST["correo_electronico"];
     $contrasena = $_POST["contrasena"];
 
-    // Verificar si los campos están vacíos o no
+    //verificar si los campos estan vacios o no
     if (empty($correo_electronico) || empty($contrasena)) {
         echo '<script>alert("Por favor, complete todos los campos."); window.location.href = "http://localhost/proyectoanalisis/index.php";</script>';
-    } else {
+    }else{
         // Escapa caracteres especiales para prevenir SQL injection
-        $correo_electronico = $conexion->real_escape_string($correo_electronico);
+    $correo_electronico = $conexion->real_escape_string($correo_electronico);
+    $contrasena = $conexion->real_escape_string($contrasena);
 
-        // Consulta preparada para obtener la contraseña almacenada en la base de datos
-        $stmt = $conexion->prepare("SELECT contrasena, rol FROM usuarios WHERE correo_electronico = ?");
-        $stmt->bind_param("s", $correo_electronico);
-        $stmt->execute();
-        $stmt->store_result();
+    
 
-        // Verifica si se encontró un resultado
-        if ($stmt->num_rows == 1) {
-            $stmt->bind_result($contrasena_hash, $rol);
-            $stmt->fetch();
 
-            // Verifica si la contraseña ingresada coincide con la contraseña almacenada
-            if (password_verify($contrasena, $contrasena_hash)) {
-                // Las credenciales son válidas
-                // Redirige según el rol
-                if ($rol == "Admin") {
-                    echo '<script>window.location.href = "http://localhost/proyectoanalisis/inicio.php";</script>';
-                } elseif ($rol == "Trabajador") {
-                    echo '<script>window.location.href = "http://localhost/proyectoanalisis/iniciotrabajador.php";</script>';
-                } elseif ($rol == "Pendiente") {
-                    echo '<script>alert("Este usuario no está autorizado, espere un momento."); window.location.href = "http://localhost/proyectoanalisis/index.php";</script>';
-                } elseif ($rol == "Jefe") {
-                    echo '<script>window.location.href = "http://localhost/proyectoanalisis/inicio.php";</script>';
-                }
-            } else {
-                // Las credenciales son inválidas
-                echo '<script>alert("Credenciales incorrectas. Intente nuevamente."); window.location.href = "http://localhost/proyectoanalisis/index.php";</script>';
-            }
+    // Consulta preparada para prevenir SQL injection
+    $stmt = $conexion->prepare("SELECT correo_electronico, rol FROM usuarios WHERE correo_electronico = ? AND contrasena = ?");
+    $stmt->bind_param("ss", $correo_electronico, $contrasena);
+    $stmt->execute();
+    $stmt->store_result();
 
-            $stmt->close();
-        } else {
-            // El correo electrónico no existe en la base de datos
-            echo '<script>alert("Correo electrónico no registrado. Regístrese antes de iniciar sesión."); window.location.href = "http://localhost/proyectoanalisis/index.php";</script>';
+    // Verifica si se encontró un resultado
+    if ($stmt->num_rows == 1) {
+        // Las credenciales son válidas
+        $stmt->bind_result($correo_electronico, $rol);
+        $stmt->fetch();
+
+        // Redirige según el rol
+        if ($rol == "Admin") {
+            echo '<script>window.location.href = "http://localhost/proyectoanalisis/inicio.php";</script>';
+        } elseif ($rol == "Trabajador") {
+            echo '<script>window.location.href = "http://localhost/proyectoanalisis/iniciotrabajador.php";</script>';
+        } elseif ($rol == "Pendiente") {
+            echo '<script>alert("Este usuario no está autorizado, espere un momento."); window.location.href = "http://localhost/proyectoanalisis/index.php";</script>';
+        } elseif ($rol == "Jefe"){
+            echo '<script>window.location.href = "http://localhost/proyectoanalisis/inicio.php";</script>';
         }
+    } else {
+        // Las credenciales son inválidas
+        echo '<script>alert("Credenciales incorrectas. Intente nuevamente."); window.location.href = "http://localhost/proyectoanalisis/index.php";</script>';
     }
-}
+
+    $stmt->close();
+
+    }
+
+    }
 
 $conexion->close();
 ?>

@@ -16,18 +16,29 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
   // Generar una contraseña aleatoria
   $nuevaContrasena = generarContrasenaAleatoria();
 
-  //Para incriptar la contraseña
+  // Para incriptar la contraseña
   $hashed_password = password_hash($nuevaContrasena, PASSWORD_DEFAULT);
 
-  // Actualizar la contraseña en la base de datos
-  $sql = "UPDATE usuarios SET contrasena='$hashed_password' WHERE id_usuario='$userId'";
+  // Obtener la dirección de correo electrónico y nombre del usuario
+  $result = $conn->query("SELECT correo_electronico, nombre_usuario FROM usuarios WHERE id_usuario='$userId'");
 
-  if ($conn->query($sql) === TRUE) {
-    // Enviar la nueva contraseña por correo electrónico
-    enviarCorreoContrasena($userId, $nuevaContrasena);
-    echo "Se ha restablecido la contraseña y enviado por correo electrónico.";
+  if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $correoUsuario = $row["correo_electronico"];
+    $nombreUsuario = $row["nombre_usuario"];
+
+    // Actualizar la contraseña en la base de datos
+    $sql = "UPDATE usuarios SET contrasena='$nuevaContrasena' WHERE id_usuario='$userId'";
+
+    if ($conn->query($sql) === TRUE) {
+      // Enviar la nueva contraseña por correo electrónico al usuario
+      enviarCorreoContrasena($correoUsuario, $nuevaContrasena, $nombreUsuario);
+      echo '<script>alert("Se ha restablecido la contraseña y enviado por correo electrónico."); window.location.href = "http://localhost/proyectoanalisis/inicio.php";</script>';
+    } else {
+      echo "Error al restablecer la contraseña: " . $conn->error;
+    }
   } else {
-    echo "Error al restablecer la contraseña: " . $conn->error;
+    echo "No se encontró un usuario con el ID proporcionado.";
   }
 }
 
@@ -47,33 +58,38 @@ function generarContrasenaAleatoria($length = 8) {
     return $contrasena;
 }
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-function enviarCorreoContrasena($to, $contrasena) {
-    $mail = new PHPMailer;
+function enviarCorreoContrasena($to, $contrasena, $nombreUsuario) {
+    require 'phpmailer/src/Exception.php';
+    require 'phpmailer/src/PHPMailer.php';
+    require 'phpmailer/src/SMTP.php';
+
+    $mail = new PHPMailer(true);
+
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'nominaproyecto8@gmail.com';
-    $mail->Password = 'NominaProyecto@#2';
-    $mail->SMTPSecure = 'tls';
-    $mail->Port = 587;
+    $mail->Username ='nominaproyecto8@gmail.com';
+    $mail->Password ='eacnroghrhztckjf';
+    $mail->SMTPSecure = 'ssl';
+    $mail->Port = 465;
 
-    $mail->setFrom('nominaproyecto8@gmail.com', 'Tienda Solidarista');
+    $mail->setFrom('nominaproyecto8@gmail.com');
     $mail->addAddress($to);
+
     $mail->isHTML(true);
 
-    $mail->Subject = 'Nueva Contraseña';
-    $mail->Body = 'Estimado usuario, tu nueva contraseña es: ' . $contrasena;
+    $mail->CharSet = 'UTF-8'; 
+    $mail->Subject = "[Nomina Solidarista] Se cambió tu contraseña";
+    $mail->Body = "Hola " . $nombreUsuario . "<br><br>Su contraseña se estableció correctamente.<br><br>Nueva contraseña: " . $contrasena . "<br><br>Si no intentó iniciar sesión en su cuenta, su contraseña puede estar comprometida.<br><br>Visite: <a href='http://localhost/proyectoanalisis/recoverpassword.php'>http://localhost/proyectoanalisis/recoverpassword.php</a> para crear una contraseña nueva y segura para su cuenta de Nomina Solidarista.<br><br>Gracias,<br>El equipo de Nomina Solidarista";
 
-    if($mail->send()) {
-        echo 'Correo enviado con la nueva contraseña.';
-    } else {
-        echo 'Error al enviar el correo: ' . $mail->ErrorInfo;
+    try {
+        $mail->send();
+        echo '<script>alert("Se ha restablecido la contraseña y enviado por correo electrónico."); window.location.href = "http://localhost/proyectoanalisis/inicio.php";</script>';
+    } catch (Exception $e) {
+        echo "Error al enviar el correo: {$mail->ErrorInfo}";
     }
 }
-
-// Llama a la función para enviar el correo con la nueva contraseña
-enviarCorreoContrasena('acunaelian3639@gmail.com', $nuevaContrasena);
-
-
 ?>

@@ -89,7 +89,7 @@
 
     <span class="title">Agregar empleado</span> <!--titulo de la web-->
   
-    <form>
+    <form action="empleado.php" method="post">
 
 
     <div class="div_cod_empleado">
@@ -143,19 +143,14 @@
 
 <div class="div_expediente_empleado">
   <label  class="label_expediente_empleado">Número de expediente del empleado:</label>
-  <input type="text"  name="expediente_empleado" class="input_expediente_empleado" placeholder="">
+  <input type="file"  name="expediente_empleado" class="input_expediente_empleado" placeholder="">
 </div>
 
 
 <div class="div_foto_empleado">
     <label class="label_foto_empleado">Seleccionar foto del empleado:</label>
-    <input type="text" name="foto_empleado" class="input_foto_empleado" placeholder="">
+    <input type="file" name="foto_empleado" class="input_foto_empleado" placeholder="">
 </div>
-
-<button class="foto_btn" onclick="seleccionarfoto()">
-  <div class="v150_33"></div>
-  <span class="v150_34">Elegir foto</span>
-</button>
 
 
 <div class="div_fk_departamento">
@@ -179,6 +174,8 @@
     <label  class="label_carnet_igss">Carnet del IGSS:</label>
     <input type="text"  name="carnet_igss" class="input_carnet_igss" placeholder="">
 </div>
+
+
 
 
 

@@ -1,45 +1,58 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="utf-8">
-    <title>Email</title>
+    <meta charset="UTF-8">
+    
+    <title>Enviar Email</title>
 </head>
 
 <body>
-    <form action="email.php" method="post">
-        <input type="text" placeholder="name" name="name">
-        <input type="email" placeholder="email" name="email">
-        <input type="text" placeholder="asunto" name="asunto">
-        <textarea placeholder="mensaje" name="msg"></textarea>
-        <button type="submit" name="send">Send</button>
+    <form class="" action="email.php" method="post">
+     Email <input type="email" name="email" value=""> <br>
+     Subject <input type="text" name="subject" value=""> <br>
+     Message <input type="text" name="message" value=""> <br>
+     <button type="submit" name="enviar">enviar</button>
 
-    </form>
-
-    
+</form>
 </body>
-
 </html>
 
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-if(isset($_POST['send'])){
-    if(!empty($_POST['name']) && !empty($_POST['asunto']) && !empty($_POST['msg']) && !empty($_POST['email']) ){
-        $name = $_POST['name'];
-        $asunto = $_POST['asunto'];
-        $msg = $_POST['msg'];
-        $email = $_POST['email'];
+require 'phpmailer/src/Exception.php';
+require 'phpmailer/src/PHPMailer.php';
+require 'phpmailer/src/SMTP.php';
 
-        $header = "From: noreply@example.com". "\r\n";
-        $header.= "Reply-To: noreply@example.com" . "\r\n";
-        $header.= "X-Mailer: PHP/". phpversion();
-        $mail = @mail($email, $asunto, $msg, $header);
+if(isset($_POST["enviar"])){
+$mail = new PHPMailer(true);
 
-        if($mail){
-            echo "<h4>!MAil enviado exitosamente</h4>";
-        }
+$mail->isSMTP();
+$mail->Host = 'smtp.gmail.com';
+$mail->SMTPAuth = true;
+$mail->Username ='nominaproyecto8@gmail.com';//Nuestro Gmail yo coloque este mi correo para prueba luego lo voy a hacer con el del proyecto
+$mail->Password ='eacnroghrhztckjf';//Nuestra contraseña de aplicacion
+$mail->SMTPSecure = 'ssl';
+$mail->Port = 465;
 
-    }
+$mail->setFrom('nominaproyecto8@gmail.com');//Nuestro Gmail
+
+$mail->addAddress($_POST["email"]);
+
+$mail->isHTML(true);
+
+$mail->Subject = "[Nomina Solidarista] Se cambio tu contraseña"; 
+$mail->Body = "Hola nombre_usuario!<br><br>Su contraseña se estableció correctamente.<br><br>Nueva contraseña:" .$_POST["message"]. "<br><br>Si no intentó iniciar sesión en su cuenta, su contraseña puede estar comprometida.<br><br>Visite: <a href='http://localhost/proyectoanalisis/recoverpassword.php'>http://localhost/proyectoanalisis/recoverpassword.php</a> para crear una contraseña nueva y segura para su cuenta de Nomina Solidarista.<br><br>Gracias,<br>El equipo de Nomina Solidarista";
+
+try {
+    // ...
+    $mail->send();
+    echo "Correo enviado correctamente desde el dispositivo:";
+
+} catch (Exception $e) {
+    echo "Error al enviar el correo: {$mail->ErrorInfo}";
 }
 
+}
 ?>
