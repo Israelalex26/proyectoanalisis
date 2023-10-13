@@ -10,9 +10,6 @@
   <link href="css/cambiar_contrasena.css" rel="stylesheet" />
   <title>Nomina PA</title>
   
-  <!-- Incluye Firebase aquí -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
 
 </head>

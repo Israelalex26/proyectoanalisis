@@ -29,7 +29,7 @@
               <input type="text" id="correo_electronico" name="correo_electronico" class="input_correo" placeholder="Ingrese su correo electrónico">
           </div>
        
-        <button class="v150_40" onclick="recoverpassword()">
+        <button class="v150_40">
           <span class="v150_41">Recupear contraseña</span>
         </button>
         
@@ -37,12 +37,10 @@
 
         </form>
 
-        <button class="v150_35" onclick="irAIncex()">
+        <button class="v150_35">
           <span class="v150_36">Cancelar</span>
         </button>
        
-  
-        <script src="js/recoverpassword.js"></script>
 
   </nav>
 
