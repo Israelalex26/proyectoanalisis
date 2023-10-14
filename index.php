@@ -79,7 +79,7 @@ $db = "id21355203_nomina";
 $conexion = new mysqli($server, $user, $pass, $db);
 
 // Verifica si hay errores en la conexión
-if ($conexion->connect_error){
+if ($conexion->connect_error) {
     die("Conexion Fallida: " . $conexion->connect_error);
 }
 
@@ -91,46 +91,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //verificar si los campos estan vacios o no
     if (empty($correo_electronico) || empty($contrasena)) {
         echo '<script>alert("Por favor, complete todos los campos."); window.location.href = "http://localhost/proyectoanalisis/index.php";</script>';
-    }else{
-        // Escapa caracteres especiales para prevenir SQL injection
-    $correo_electronico = $conexion->real_escape_string($correo_electronico);
-    $contrasena = $conexion->real_escape_string($contrasena);
-
-    
-
-
-    // Consulta preparada para prevenir SQL injection
-    $stmt = $conexion->prepare("SELECT correo_electronico, rol FROM usuarios WHERE correo_electronico = ? AND contrasena = ?");
-    $stmt->bind_param("ss", $correo_electronico, $contrasena);
-    $stmt->execute();
-    $stmt->store_result();
-
-    // Verifica si se encontró un resultado
-    if ($stmt->num_rows == 1) {
-        // Las credenciales son válidas
-        $stmt->bind_result($correo_electronico, $rol);
-        $stmt->fetch();
-
-        // Redirige según el rol
-        if ($rol == "Admin") {
-            header("Location: inicio.php");
-        } elseif ($rol == "Trabajador") {
-            header("Location: inicio.php");
-        } elseif ($rol == "Pendiente") {
-            header("Location: index.php");
-        } elseif ($rol == "Jefe"){
-            header("Location: index.php");
-        }
     } else {
-        // Las credenciales son inválidas
-        echo '<script>alert("Credenciales incorrectas. Intente nuevamente."); window.location.href = "index.php";</script>';
-    }
+        // Escapa caracteres especiales para prevenir SQL injection
+        $correo_electronico = $conexion->real_escape_string($correo_electronico);
 
-    $stmt->close();
+        // Consulta preparada para prevenir SQL injection
+        $stmt = $conexion->prepare("SELECT correo_electronico, contrasena, rol FROM usuarios WHERE correo_electronico = ?");
+        $stmt->bind_param("s", $correo_electronico);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
 
-    }
+        // Verifica si se encontró un resultado
+        if ($resultado->num_rows == 1) {
+            // Las credenciales son válidas
+            $row = $resultado->fetch_assoc();
+            $contrasena_desencriptada = $row['contrasena'];
+            $rol = $row['rol'];
 
+            // Verifica si la contraseña ingresada coincide con la contraseña almacenada
+            if (password_verify($contrasena, $contrasena_desencriptada)) {
+                $_SESSION['correo_electronico'] = $correo_electronico;
+                $_SESSION['rol'] = $rol;
+                
+                // Redirige según el rol
+                if ($rol == "Admin") {
+                    header("Location: inicio.php");
+                } elseif ($rol == "Trabajador") {
+                    header("Location: inicio.php");
+                } elseif ($rol == "Pendiente") {
+                    header("Location: index.php");
+                } elseif ($rol == "Jefe") {
+                    header("Location: index.php");
+                }
+            } else {
+                // Las credenciales son inválidas
+                echo '<script>alert("Credenciales incorrectas. Intente nuevamente."); window.location.href = "index.php";</script>';
+            }
+        } else {
+            // El correo electrónico no existe en la base de datos
+            echo '<script>alert("Correo electronico no registrado."); window.location.href = "index.php";</script>';
+        }
+
+        $stmt->close();
     }
+}
 
 $conexion->close();
 ?>

@@ -90,9 +90,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       // Insertar datos en la tabla "users" sin especificar un valor para "id_users"
       
       //Para incriptar la contraseña
-      $hashed_password = password_hash($contrasena, PASSWORD_DEFAULT);
+      $contrasena_encrip = password_hash($contrasena, PASSWORD_DEFAULT);
 
-      $sql = "INSERT INTO usuarios (correo_electronico, nombre_usuario, contrasena, rol) VALUES ('$correo_electronico', '$nombre_usuario', '$contrasena', 'Pendiente')";
+      $sql = "INSERT INTO usuarios (correo_electronico, nombre_usuario, contrasena, rol) VALUES ('$correo_electronico', '$nombre_usuario', '$contrasena_encrip', 'Pendiente')";
 
       if ($conn->query($sql) === TRUE) {
           echo '<script>alert("Registro exitoso, Espere un momento."); window.location.href = "index.php";</script>';
