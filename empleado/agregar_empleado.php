@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link href="css/empleado2.css" rel="stylesheet" />
+  <link href="css/empleado.css" rel="stylesheet" />
   <title>Nomina PA</title>
   
   <!-- Incluye Firebase aquí -->
@@ -18,69 +18,6 @@
 </head>
 
 <body>
-  <header>
-      <div class="logo">
-          <img src="img/v42_4.png" alt="Logo">
-      </div>
-      <nav>
-          <ul>
-
-              <li><a href="inicio.html">Inicio</a>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Empleado</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="empleado.html">Empleado</a></li>
-                  <li><a class="dropdown-item" href="#">Expediente Empleado</a></li>
-                  <li><a class="dropdown-item" href="#">Hora extra</a></li>
-                  <li><a class="dropdown-item" href="#">Bono 14</a></li>
-                  <li><a class="dropdown-item" href="#">Aguinaldo</a></li>
-                  <li><a class="dropdown-item" href="#">Salario</a></li>
-                  <li><a class="dropdown-item" href="#">Salario</a></li>
-
-
-                </ul>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Pólizas</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Polizas</a></li>
-                  <li><a class="dropdown-item" href="#">Tipo de Poliza</a></li>
-                  <li><a class="dropdown-item" href="#">Anticipo salario</a></li>
-                </ul>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Tienda Solidarista</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="ventas.html">Ventas</a></li>
-                  <li><a class="dropdown-item" href="#">Producto</a></li>
-                  <li><a class="dropdown-item" href="#">Producción</a></li>
-                  <li><a class="dropdown-item" href="#">Comisión</a></li>
-                  <li><a class="dropdown-item" href="#">Piezas</a></li>
-                </ul>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Ajustes</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Cambiar contraseña</a></li>
-                  <li><a class="dropdown-item" href="#">Editar usuario</a></li>
-                  <li><a class="dropdown-item" href="#">Politica y Privacidad</a></li>
-                </ul>
-              </li>
-
-          </ul>
-      </nav>
-
-  
-    </header>
 
   <nav class="nav1">
 
@@ -199,3 +136,84 @@
 </body>
 
 </html>
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "id21355203_nomina";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Conexión a la base de datos fallida: " . $conn->connect_error);
+}
+
+// Asumiendo que 'fk_cod_empleado' es una columna de la tabla 'expediente'
+$alterExpedienteSql = "ALTER TABLE expediente MODIFY COLUMN id_expediente INT AUTO_INCREMENT";
+
+if ($conn->query($alterExpedienteSql) === TRUE) {
+} else {
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $cod_empleado = $_POST['cod_empleado'];
+    $nombre_completo = $_POST['nombre_completo'];
+    $correo_electronico = $_POST['correo_electronico'];
+    $dpi = $_POST['dpi'];
+    $salario = $_POST['salario'];
+    $numero_telefono = $_POST['numero_telefono'];
+    $conyuge = $_POST['conyuge'];
+    $jornada = $_POST['jornada'];
+    $activo = $_POST['activo'];
+    $foto_empleado = $_POST['foto_empleado'];
+    $fk_departamento = $_POST['fk_departamento'];
+    $fecha_contratacion = $_POST['fecha_contratacion'];
+    $cartnet_irtra = $_POST['cartnet_irtra'];
+    $carnet_igss = $_POST['carnet_igss'];
+    $expediente_empleado = $_POST['expediente_empleado'];
+
+    if (!filter_var($correo_electronico, FILTER_VALIDATE_EMAIL)) {
+        echo '<script>alert("El correo electrónico ingresado no es válido."); window.location.href = "agregar_empleado.php";</script>';
+        exit();
+    } else {
+        // Insertar datos en la tabla de empleado
+        $sql_empleado = "INSERT INTO empleado (cod_empleado, nombre_completo, correo_electronico, dpi, salario, numero_telefono, conyuge, jornada, activo, foto_empleado, fk_departamento, fecha_contratacion, cartnet_irtra, carnet_igss)
+                VALUES ('$cod_empleado', '$nombre_completo', '$correo_electronico', '$dpi', '$salario', '$numero_telefono', '$conyuge', '$jornada', '$activo', '$foto_empleado', '$fk_departamento', '$fecha_contratacion', '$cartnet_irtra', '$carnet_igss')";
+
+        if ($conn->query($sql_empleado) === TRUE) {
+            // Insertar datos en la tabla de expediente
+            $sql_expediente = "INSERT INTO expediente (archivo_pdf, fk_cod_empleado)
+            VALUES ('$expediente_empleado', '$cod_empleado')";
+
+            if ($conn->query($sql_expediente) === TRUE) {
+                // Resto del código
+                $alterUsuariosSql = "ALTER TABLE usuarios MODIFY COLUMN id_usuario INT AUTO_INCREMENT";
+
+                if ($conn->query($alterUsuariosSql) === TRUE) {
+
+                    $sql_usuarios = "INSERT INTO usuarios (correo_electronico, nombre_usuario, contrasena, rol)
+                    VALUES ('$correo_electronico', '$nombre_completo', 'Nomina123', 'Pendiente')";
+
+                    if ($conn->query($sql_usuarios) === TRUE) {
+                        echo '<script>alert("La información se guardo correctamente."); window.location.href = "/proyectoanalisis/empleado.php";</script>';
+
+                    } else {
+                        echo "Error al insertar en la tabla usuarios: ";
+                    }
+                } else {
+                    echo "Error al modificar la tabla usuarios: ";
+                }
+
+            } else {
+                echo "Error al insertar en la tabla expediente: ";
+            }
+        } else {
+            echo '<script>alert("Error al insertar a la Base de datos."); window.location.href = "/proyectoanalisis/empleado.php";</script>';
+
+        }
+    }
+}
+
+$conn->close();
+?>
