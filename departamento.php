@@ -77,7 +77,6 @@ $result = $conn->query($sql);
                     </li>
                 </ul>
             </nav>
-            <button type="submit" name="cerrar_sesion" class="btn btn-outline-secondary" onclick="return confirm('¿Está seguro de que desea cerrar sesión?')">Cerrar sesión</button>
         </header>
     </form>
 

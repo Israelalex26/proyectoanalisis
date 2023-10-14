@@ -62,11 +62,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     die("Conexión fallida: " . $conn->connect_error);
                 }
 
-                // Hashear la nueva contraseña
-                $hashed_password = password_hash($nueva_contrasena, PASSWORD_DEFAULT);
+                //Para incriptar la contraseña
+                $contrasena_encrip = password_hash($nueva_contrasena, PASSWORD_DEFAULT);
+
 
                 // Actualizar la contraseña en la base de datos
-                $sql = "UPDATE usuarios SET contrasena = '$nueva_contrasena' WHERE id_usuario = $id_usuario";
+                $sql = "UPDATE usuarios SET contrasena = '$contrasena_encrip' WHERE id_usuario = $id_usuario";
 
                 if ($conn->query($sql) === TRUE) {
                     echo '<script>alert("Contraseña cambiada exitosamente."); window.location.href = "index.php";</script>';
