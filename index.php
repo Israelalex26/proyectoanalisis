@@ -113,17 +113,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Redirige según el rol
         if ($rol == "Admin") {
-            echo '<script>window.location.href = "http://localhost/proyectoanalisis/inicio.php";</script>';
+            header("Location: inicio.php");
         } elseif ($rol == "Trabajador") {
-            echo '<script>window.location.href = "http://localhost/proyectoanalisis/iniciotrabajador.php";</script>';
+            header("Location: inicio.php");
         } elseif ($rol == "Pendiente") {
-            echo '<script>alert("Este usuario no está autorizado, espere un momento."); window.location.href = "http://localhost/proyectoanalisis/index.php";</script>';
+            header("Location: index.php");
         } elseif ($rol == "Jefe"){
-            echo '<script>window.location.href = "http://localhost/proyectoanalisis/inicio.php";</script>';
+            header("Location: index.php");
         }
     } else {
         // Las credenciales son inválidas
-        echo '<script>alert("Credenciales incorrectas. Intente nuevamente."); window.location.href = "http://localhost/proyectoanalisis/index.php";</script>';
+        echo '<script>alert("Credenciales incorrectas. Intente nuevamente."); window.location.href = "index.php";</script>';
     }
 
     $stmt->close();

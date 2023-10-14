@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Verificar que los campos no estén vacíos
     if (empty($nueva_contrasena) || empty($repetir_contrasena)) {
-        echo '<script>alert("Los campos de contraseña no pueden estar vacíos.");</script>';
+        echo '<script>alert("Por favor, llene todo los campos."); window.location.href = "changepassword.php?id_usuario=' . $id_usuario . '";</script>';
     } else {
         // Verificar que las contraseñas coincidan
         if ($nueva_contrasena === $repetir_contrasena) {
@@ -69,18 +69,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $sql = "UPDATE usuarios SET contrasena = '$nueva_contrasena' WHERE id_usuario = $id_usuario";
 
                 if ($conn->query($sql) === TRUE) {
-                    echo '<script>alert("Contraseña cambiada exitosamente."); window.location.href = "http://localhost/proyectoanalisis/index.php";</script>';
+                    echo '<script>alert("Contraseña cambiada exitosamente."); window.location.href = "index.php";</script>';
                 } else {
-                    echo "Error al actualizar la contraseña: " . $conn->error;
+                    echo '<script>alert("Error al actualizar la contraseña."); window.location.href = "recoverpassword.php";</script>';
+
                 }
 
                 // Cierra la conexión a la base de datos
                 $conn->close();
             } else {
-                echo "ID de usuario no proporcionado en el formulario.";
+                echo '<script>alert("ID de usuario no proporcionado en el formulario."); window.location.href = "recoverpassword.php";</script>';
             }
         } else {
-            echo '<div class="alert alert-danger" role="alert">Las contraseñas no coinciden</div>';
+            echo '<script>alert("Las contraseñas no coinciden."); window.location.href = "changepassword.php?id_usuario=' . $id_usuario . '";</script>';
+
         }
     }
 }

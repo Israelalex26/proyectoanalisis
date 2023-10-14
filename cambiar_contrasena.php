@@ -96,12 +96,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Verificar si algún campo está vacío
     if (empty($contrasena_actual) || empty($contrasena_nueva) || empty($repetir_contrasena)) {
-        echo '<div id="liveAlertPlaceholder" class="alert alert-dark" role="alert">Por favor, complete todos los campos.</div>';
+        echo '<div id="liveAlertPlaceholder" class="alert alert-warning" role="alert">Por favor, complete todos los campos.</div>';
     } else {
         if (strlen($contrasena_actual) < 7 || strlen($contrasena_actual) > 16 ||
             strlen($contrasena_nueva) < 7 || strlen($contrasena_nueva) > 16 ||
             strlen($repetir_contrasena) < 7 || strlen($repetir_contrasena) > 16) {
-            echo '<div class="alert alert-dark" role="alert">Cada contraseña debe tener entre 7 y 16 caracteres.</div>';
+            echo '<div class="alert alert-warning" role="alert">Cada contraseña debe tener entre 7 y 16 caracteres.</div>';
         } else {
             // Obtener el ID del usuario actual, puedes ajustar esto según tu lógica de autenticación
             $id_usuario_actual = 1; // Reemplaza 1 con el ID del usuario actual
@@ -126,15 +126,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     if ($conn->query($sql) === TRUE) {
                         echo '<div class="alert alert-success" role="alert">La contraseña se actualizó correctamente.</div>';
                     } else {
-                        echo '<div class="alert alert-danger" role="alert">Error al actualizar la contraseña: ' . $conn->error . '</div>';
+                        echo '<div class="alert alert-warning" role="alert">Error al actualizar la contraseña: ' . $conn->error . '</div>';
                     }
                 } else {
                     // Contraseña actual no coincide, muestra una alerta
-                    echo '<div class="alert alert-danger" role="alert">La contraseña actual no es válida.</div>';
+                    echo '<div class="alert alert-warning" role="alert">La contraseña actual no es válida.</div>';
                 }
             } else {
                 // No se encontró un usuario con ese ID
-                echo '<div class="alert alert-danger" role="alert">Usuario no encontrado.</div>';
+                echo '<div class="alert alert-warning" role="alert">Usuario no encontrado.</div>';
             }
         }
     }

@@ -81,8 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     } else {
         // El correo electrónico no existe en la base de datos
-        echo '<script>alert("El correo electrónico ingresado no está registrado."); window.location.href = "http://localhost/proyectoanalisis/recoverpassword.php";</script>';
-
+        echo '<script>alert("El correo electrónico ingresado no está registrado."); window.location.href = "recoverpassword.php";</script>';
     }
 }
 

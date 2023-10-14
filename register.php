@@ -71,13 +71,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Verificar que los campos no estén vacíos
     if (empty($correo_electronico) || empty($nombre_usuario) || empty($contrasena)) {
-        echo '<script>alert("Por favor, complete todos los campos."); window.location.href = "http://localhost/proyectoanalisis/register.php";</script>';
+        echo '<script>alert("Por favor, complete todos los campos."); window.location.href = "register.php";</script>';
         exit();
     }else{
 
       // Verificar que el correo electrónico esté bien escrito
     if (!filter_var($correo_electronico, FILTER_VALIDATE_EMAIL)) {
-      echo '<script>alert("El correo electrónico ingresado no es válido."); window.location.href = "http://localhost/proyectoanalisis/register.php";</script>';
+      echo '<script>alert("El correo electrónico ingresado no es válido."); window.location.href = "register.php";</script>';
       exit();
   }else{
 
@@ -95,12 +95,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $sql = "INSERT INTO usuarios (correo_electronico, nombre_usuario, contrasena, rol) VALUES ('$correo_electronico', '$nombre_usuario', '$contrasena', 'Pendiente')";
 
       if ($conn->query($sql) === TRUE) {
-          echo '<script>alert("Registro exitoso, Espere un momento."); window.location.href = "http://localhost/proyectoanalisis/index.php";</script>';
+          echo '<script>alert("Registro exitoso, Espere un momento."); window.location.href = "index.php";</script>';
       } else {
-          echo '<script>alert("Error al registrar usuario:"); window.location.href = "http://localhost/proyectoanalisis/register.php";</script>';
+          echo '<script>alert("Error al registrar usuario:"); window.location.href = "register.php";</script>';
       }
   } else {
-      echo '<script>alert("Error al modificar la tabla:"); window.location.href = "http://localhost/proyectoanalisis/register.php";</script>';
+      echo '<script>alert("Error al modificar la tabla:"); window.location.href = "register.php";</script>';
   }
 
 
