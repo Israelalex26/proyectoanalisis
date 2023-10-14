@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["user_id"])) {
 
   // Verifica que el correo electrónico tenga un formato válido
   if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-    echo '<script>alert("El correo electrónico no tiene un formato válido."); window.location.href = "http://localhost/proyectoanalisis/usuario/modificar_usuario.php";</script>';
+    echo '<script>alert("El correo electrónico no tiene un formato válido."); window.location.href = "modificar_usuario.php";</script>';
     exit();
   }else{
 
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["user_id"])) {
   $sql = "UPDATE usuarios SET correo_electronico='$correo', nombre_usuario='$nombreUsuario', rol='$rol' WHERE id_usuario='$userId'";
 
   if ($conn->query($sql) === TRUE) {
-    echo '<script>alert("Los datos se actualizaron correctamente."); window.location.href = "http://localhost/proyectoanalisis/inicio.php";</script>';
+    echo '<script>alert("Los datos se actualizaron correctamente."); window.location.href = "/proyectoanalisis/inicio.php";</script>';
 
   } else {
     echo '<div class="alert alert-danger" role="alert">Error al actualizar el producto: ' . $conn->error . '</div>';

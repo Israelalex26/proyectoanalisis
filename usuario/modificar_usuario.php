@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
             <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>';
 
-    echo '<a href="http://localhost/proyectoanalisis/inicio.php" class="btn btn-secondary">Cancelar</a>';
+    echo '<a href="/proyectoanalisis/inicio.php" class="btn btn-secondary">Cancelar</a>';
 
   } else {
     echo "No se encontró un usuario con ese ID.";

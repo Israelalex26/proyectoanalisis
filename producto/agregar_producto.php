@@ -95,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Verificar que los campos no estén vacíos
     if (empty($nombre) || empty($precio) || empty($cantidad)) {
-        echo '<script>alert("Por favor, complete todos los campos."); window.location.href = "http://localhost/proyectoanalisis/producto/agregar_producto.php";</script>';
+        echo '<script>alert("Por favor, complete todos los campos."); window.location.href = "/proyectoanalisis/producto/agregar_producto.php";</script>';
         exit();
     }else{
 
@@ -109,12 +109,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $sql = "INSERT INTO producto (nombre, precio, cantidad) VALUES ('$nombre', '$precio', '$cantidad')";
 
       if ($conn->query($sql) === TRUE) {
-          echo '<script>alert("Registro exitoso, Espere un momento."); window.location.href = "http://localhost/proyectoanalisis/producto.php";</script>';
+          echo '<script>alert("Registro exitoso, Espere un momento."); window.location.href = "/proyectoanalisis/producto.php";</script>';
       } else {
-          echo '<script>alert("Error al registrar productp:"); window.location.href = "http://localhost/proyectoanalisis/producto/agregar_producto.php";</script>';
+          echo '<script>alert("Error al registrar producto:"); window.location.href = "/proyectoanalisis/producto/agregar_producto.php";</script>';
       }
   } else {
-      echo '<script>alert("Error al modificar la tabla:"); window.location.href = "http://localhost/proyectoanalisis/producto/agregar_producto.php";</script>';
+      echo '<script>alert("Error al modificar"); window.location.href = "/proyectoanalisis/producto/agregar_producto.php";</script>';
   }
 
 

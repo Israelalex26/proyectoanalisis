@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($conn->query($sql) === TRUE) {
         // Redirigir de nuevo a la página de departamentos después de la actualización
-        echo '<script>alert("Se actulaizo correctamente."); window.location.href = "http://localhost/proyectoanalisis/departamento.php";</script>';
+        echo '<script>alert("Se actulaizo correctamente."); window.location.href = "/proyectoanalisis/departamento.php";</script>';
         exit;
     } else {
         echo "Error al actualizar el departamento: " . $conn->error;

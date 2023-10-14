@@ -33,12 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
     if ($conn->query($sql) === TRUE) {
       // Enviar la nueva contraseña por correo electrónico al usuario
       enviarCorreoContrasena($correoUsuario, $nuevaContrasena, $nombreUsuario);
-      echo '<script>alert("Se ha restablecido la contraseña y enviado por correo electrónico."); window.location.href = "http://localhost/proyectoanalisis/inicio.php";</script>';
+      echo '<script>alert("Se ha restablecido la contraseña y enviado por correo electrónico."); window.location.href = "/proyectoanalisis/inicio.php";</script>';
     } else {
-      echo "Error al restablecer la contraseña: " . $conn->error;
+      echo '<script>alert("Error al restablecer la contraseña."); window.location.href = "/proyectoanalisis/inicio.php";</script>';
+
     }
   } else {
-    echo "No se encontró un usuario con el ID proporcionado.";
+    echo '<script>alert("Error al restablecer la contraseña."); window.location.href = "/proyectoanalisis/inicio.php";</script>';
   }
 }
 
@@ -87,9 +88,11 @@ function enviarCorreoContrasena($to, $contrasena, $nombreUsuario) {
 
     try {
         $mail->send();
-        echo '<script>alert("Se ha restablecido la contraseña y enviado por correo electrónico."); window.location.href = "http://localhost/proyectoanalisis/inicio.php";</script>';
+        echo '<script>alert("Se ha restablecido la contraseña y enviado por correo electrónico."); window.location.href = "/proyectoanalisis/inicio.php";</script>';
     } catch (Exception $e) {
-        echo "Error al enviar el correo: {$mail->ErrorInfo}";
+    echo '<script>alert("Error al enviar el correo."); window.location.href = "/proyectoanalisis/inicio.php";</script>';
+
+        
     }
 }
 ?>

@@ -93,16 +93,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //Verifica que todos los campos esten llenos
     if(empty($departamento) || empty($piso)){
 
-        echo '<script>alert("Debes de llenar todos los campos."); window.location.href = "http://localhost/proyectoanalisis/departamento/agregar_departamento.php";</script>';
+        echo '<script>alert("Debes de llenar todos los campos."); window.location.href = "/proyectoanalisis/departamento/agregar_departamento.php";</script>';
 
     }else{
         //insertar los datos en la tabla departmant
         $sql_departamento = "INSERT INTO departamento (departamento, piso) VALUES ('$departamento', '$piso');";
 
         if ($conn->query($sql_departamento) === TRUE) {
-            echo '<script>alert("Departamento agregado correctamente."); window.location.href = "http://localhost/proyectoanalisis/departamento.php";</script>';
+            echo '<script>alert("Departamento agregado correctamente."); window.location.href = "/proyectoanalisis/departamento.php";</script>';
         } else {
-            echo '<script>alert("Error al subir a la DB"); window.location.href = "http://localhost/proyectoanalisis/departamento.php";</script>';
+            echo '<script>alert("Error al subir a la DB"); window.location.href = "/proyectoanalisis/departamento.php";</script>';
         }
 
     }

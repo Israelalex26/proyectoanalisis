@@ -19,10 +19,10 @@ $departamento_id = $_GET['id']; // Asegúrate de validar y sanear esta entrada p
 $sql = "DELETE FROM departamentos WHERE id = $departamento_id";
 
 if ($conn->query($sql) === TRUE) {
-    echo '<script>alert("Producto eliminado con éxito."); window.location.href = "http://localhost/proyectoanalisis/producto.php";</script>';
+    echo '<script>alert("Producto eliminado con éxito."); window.location.href = "/proyectoanalisis/producto.php";</script>';
 
 } else {
-    echo '<script>alert("Error al eliminar el producto."); window.location.href = "http://localhost/proyectoanalisis/producto.php";</script>';
+    echo '<script>alert("Error al eliminar el producto."); window.location.href = "/proyectoanalisis/producto.php";</script>';
 
 }
 
