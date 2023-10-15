@@ -45,7 +45,7 @@ $result = $conn->query($sql);
                 <ul>
                     <li><a href="inicio.php">Inicio</a>
                     </li>
-                    <li><a class="dropdown-item" href="empleado.php">Empleado</a></li>
+                    <li><a class="dropdown-item" href="expediente.php">Expediente</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Nomina</a>

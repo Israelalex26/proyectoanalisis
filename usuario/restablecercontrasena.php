@@ -27,8 +27,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
     $correoUsuario = $row["correo_electronico"];
     $nombreUsuario = $row["nombre_usuario"];
 
+     //Para incriptar la contraseña
+     $contrasena_encrip = password_hash($nuevaContrasena, PASSWORD_DEFAULT);
+
+
     // Actualizar la contraseña en la base de datos
-    $sql = "UPDATE usuarios SET contrasena='$nuevaContrasena' WHERE id_usuario='$userId'";
+    $sql = "UPDATE usuarios SET contrasena='$contrasena_encrip' WHERE id_usuario='$userId'";
 
     if ($conn->query($sql) === TRUE) {
       // Enviar la nueva contraseña por correo electrónico al usuario
