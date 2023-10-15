@@ -127,10 +127,15 @@
 
 </form>
 
+<button class="foto_btn" onclick="seleccionarfoto()">
+  <div class="v150_33"></div>
+  <span class="v150_34">Elegir foto</span>
+</button>
 
   </nav>
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+      <script src="js/foto_empleado.js"></script>
 
 
 </body>

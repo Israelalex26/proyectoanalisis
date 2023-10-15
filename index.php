@@ -71,9 +71,9 @@
 session_start();
 
 $server = "localhost";
-$user = "root";
-$pass = "";
-$db = "id21355203_nomina";
+$user = "if0_35236724";
+$pass = "zldJ0dWH4gEdB8";
+$db = "if0_35236724_nomina";
 
 // Establece la conexión a la base de datos
 $conexion = new mysqli($server, $user, $pass, $db);
