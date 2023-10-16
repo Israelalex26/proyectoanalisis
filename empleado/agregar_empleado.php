@@ -10,9 +10,10 @@
   <link href="css/empleado.css" rel="stylesheet" />
   <title>Nomina PA</title>
   
-  <!-- Incluye Firebase aquí -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
   
 </head>
@@ -79,14 +80,14 @@
 </div>
 
 <div class="div_expediente_empleado">
-  <label  class="label_expediente_empleado">Número de expediente del empleado:</label>
-  <input type="text"  name="expediente_empleado" class="input_expediente_empleado" placeholder="">
+  <label  class="label_expediente_empleado">Seleccionar expediente (PDF):</label>
+  <input type="text" id="expediente_empleado" name="expediente_empleado" class="input_expediente_empleado" placeholder="">
 </div>
 
 
 <div class="div_foto_empleado">
     <label class="label_foto_empleado">Seleccionar foto del empleado:</label>
-    <input type="text" name="foto_empleado" class="input_foto_empleado" placeholder="">
+    <input type="text" id="foto_empleado" name="foto_empleado" class="input_foto_empleado" placeholder="">
 </div>
 
 
@@ -127,16 +128,21 @@
 
 </form>
 
-<button class="foto_btn" onclick="seleccionarfoto()">
-  <div class="v150_33"></div>
-  <span class="v150_34">Elegir foto</span>
+<button class="foto_btn" onclick="login()">
+  <span >Elegir foto</span>
+</button>
+
+<button class="foto_btn" onclick="loginpdf()">
+  <span>Elegir PDF</span>
 </button>
 
   </nav>
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-      <script src="js/foto_empleado.js"></script>
 
+
+      <script src="firebase-config.js"></script>
+    <script src="js/foto_empleado.js"></script>
 
 </body>
 
