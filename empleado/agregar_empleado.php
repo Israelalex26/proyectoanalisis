@@ -27,7 +27,7 @@
 
     <span class="title">Agregar empleado</span> <!--titulo de la web-->
   
-    <form action="empleado.php" method="post">
+    <form action="agregar_empleado.php" method="post">
 
 
     <div class="div_cod_empleado">
