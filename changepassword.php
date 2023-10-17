@@ -35,12 +35,9 @@
 </html>
 
 <?php
-// Definir las variables de conexión a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "id21355203_nomina";
+include('conexion.php');
 
+if ($conn){
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nueva_contrasena = $_POST['contrasena'];
     $repetir_contrasena = $_POST['repit_password'];
@@ -87,4 +84,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+}else{
+    echo "No se pudo establecer conexión a la base de datos.";
+  
+  }
 ?>

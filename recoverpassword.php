@@ -50,19 +50,9 @@
 
 
 <?php
-// Conexión a la base de datos (sustituye 'tu_host', 'tu_usuario', 'tu_contraseña' y 'tu_base_de_datos' con los valores reales)
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "id21355203_nomina";
+include('conexion.php');
 
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+if ($conn){
 
 require 'phpmailer/src/Exception.php';
 require 'phpmailer/src/PHPMailer.php';
@@ -137,6 +127,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo '<script>alert("El correo electrónico ingresado no está registrado."); window.location.href = "recoverpassword.php";</script>';
     }
 }
+}else{
+  echo "No se pudo establecer conexión a la base de datos.";
 
-$conn->close();
+}
 ?>

@@ -1,16 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "id21355203_nomina";
+include('conexion.php');
 
-// Conexión a la base de datos
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
-}
+if ($conn){
 
 // Definir la variable de búsqueda
 $searchName = "";
@@ -21,6 +12,10 @@ if (isset($_GET['searchName'])) {
 // Consulta SQL para obtener los datos de la tabla "producto" con filtro por nombre
 $sql = "SELECT id_producto, nombre, precio, cantidad FROM producto WHERE nombre LIKE '%$searchName%'";
 $result = $conn->query($sql);
+}else{
+    echo "No se pudo establecer conexión a la base de datos.";
+
+}
 ?>
 
 <!DOCTYPE html>

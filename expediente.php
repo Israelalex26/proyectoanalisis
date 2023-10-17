@@ -1,16 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "id21355203_nomina";
+include('conexion.php');
 
-// Conexión a la base de datos
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
-}
+if ($conn){
 
 // Definir la variable de búsqueda
 $search = "";
@@ -26,6 +17,10 @@ $result = $conn->query($sql);
 if (!$result) {
     die("Error en la consulta: " . $conn->error);
 }
+}else{
+    echo "No se pudo establecer conexión a la base de datos.";
+  
+  }
 ?>
 
 <!DOCTYPE html>
