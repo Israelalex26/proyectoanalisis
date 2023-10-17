@@ -31,7 +31,7 @@
 
         <div class="div_correo">
           <label for="correo_electronico" class="label_correo">Correo electrónico</label>
-          <input type="text" id="correo_electronico" name="correo_electronico" class="input_correo" placeholder="Ingrese su correo electrónico">
+          <input type="email" id="correo_electronico" name="correo_electronico" class="input_correo" placeholder="Ingrese su correo electrónico">
       </div>
 
       
