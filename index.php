@@ -126,6 +126,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+}else{
+        echo "No se pudo establecer conexión a la base de datos.";
+
 }
 
 ?>

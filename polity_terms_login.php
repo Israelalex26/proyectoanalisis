@@ -105,21 +105,10 @@
 </html>
 
 <?php
-// Inicia la sesión antes de cualquier salida hacia el navegador
-session_start();
+// Incluye el archivo de conexión
+include('conexion.php');
 
-$server = "localhost";
-$user = "root";
-$pass = "";
-$db = "id21355203_nomina";
-
-// Establece la conexión a la base de datos
-$conexion = new mysqli($server, $user, $pass, $db);
-
-// Verifica si hay errores en la conexión
-if ($conexion->connect_error){
-    die("Conexion Fallida: " . $conexion->connect_error);
-}
+if ($conn){
 
 // Verifica si la solicitud es de tipo POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -167,5 +156,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 
-$conexion->close();
+}else{
+    echo "No se pudo establecer conexión a la base de datos.";
+
+}
+
 ?>

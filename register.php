@@ -50,18 +50,10 @@
 </html>
 
 <?php
-$server = "localhost";
-$user = "root";
-$pass = "";
-$db = "id21355203_nomina";
+// Incluye el archivo de conexión
+include('conexion.php');
 
-// Crear una conexión a la base de datos
-$conn = new mysqli($server, $user, $pass, $db);
-
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("La conexión a la base de datos falló: " . $conn->connect_error);
-}
+if ($conn){
 
 // Recuperar datos del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -111,6 +103,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     
 }
+}else{
+    echo "No se pudo establecer conexión a la base de datos.";
 
-$conn->close();
+}
 ?>
