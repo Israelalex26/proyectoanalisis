@@ -149,18 +149,12 @@
 </html>
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "id21355203_nomina";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+include('conexion.php');
 
-if ($conn->connect_error) {
-    die("Conexión a la base de datos fallida: " . $conn->connect_error);
-}
+if ($conn){
 
-// Asumiendo que 'fk_cod_empleado' es una columna de la tabla 'expediente'
+    // Asumiendo que 'fk_cod_empleado' es una columna de la tabla 'expediente'
 $alterExpedienteSql = "ALTER TABLE expediente MODIFY COLUMN id_expediente INT AUTO_INCREMENT";
 
 if ($conn->query($alterExpedienteSql) !== TRUE) {
@@ -220,7 +214,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Error al insertar en la tabla empleado: " . $conn->error;
         }
     }
+  }
+
 }
 
-$conn->close();
+
 ?>
