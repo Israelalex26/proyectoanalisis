@@ -1,16 +1,7 @@
 <?php
-$server = "localhost";
-$user = "root";
-$pass = "";
-$db = "id21355203_nomina";
+include('conexion.php');
 
-// Crear una nueva conexión a la base de datos
-$conn = new mysqli($server, $user, $pass, $db);
-
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Conexion Fallida: " . $conn->connect_error);
-}
+if ($conn){
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtener los datos del formulario
@@ -30,6 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Cerrar la conexión a la base de datos
-$conn->close();
+}else{
+    echo "No se pudo establecer conexión a la base de datos.";
+
+}
 ?>

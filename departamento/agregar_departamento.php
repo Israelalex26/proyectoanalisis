@@ -69,19 +69,9 @@
 <?php
 
 //Establece  la conexion  a la base de datos
+include('conexion.php');
 
-$server = "localhost";
-$user = "root";
-$pass = "";
-$db = "id21355203_nomina";
-
-// Crear una conexión a la base de datos
-$conn = new mysqli($server, $user, $pass, $db);
-
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("La conexión a la base de datos falló: " . $conn->connect_error);
-}
+if ($conn){
 
 
 // Verifica si la solicitud es de tipo POST
@@ -109,6 +99,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 }
 
-$conn->close();
+}else{
+  echo "No se pudo establecer conexión a la base de datos.";
+
+}
 
 ?>
