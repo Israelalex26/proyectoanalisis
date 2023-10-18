@@ -132,7 +132,7 @@
   <span >Elegir foto</span>
 </button>
 
-<button class="foto_btn" onclick="loginpdf()">
+<button class="pdf_btn" onclick="loginpdf()">
   <span>Elegir PDF</span>
 </button>
 
@@ -163,8 +163,8 @@ if ($conn->connect_error) {
 // Asumiendo que 'fk_cod_empleado' es una columna de la tabla 'expediente'
 $alterExpedienteSql = "ALTER TABLE expediente MODIFY COLUMN id_expediente INT AUTO_INCREMENT";
 
-if ($conn->query($alterExpedienteSql) === TRUE) {
-} else {
+if ($conn->query($alterExpedienteSql) !== TRUE) {
+    echo "Error al modificar la tabla expediente: " . $conn->error;
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -201,27 +201,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Resto del código
                 $alterUsuariosSql = "ALTER TABLE usuarios MODIFY COLUMN id_usuario INT AUTO_INCREMENT";
 
-                if ($conn->query($alterUsuariosSql) === TRUE) {
-
-                    $sql_usuarios = "INSERT INTO usuarios (correo_electronico, nombre_usuario, contrasena, rol)
-                    VALUES ('$correo_electronico', '$nombre_completo', 'Nomina123', 'Pendiente')";
-
-                    if ($conn->query($sql_usuarios) === TRUE) {
-                        echo '<script>alert("La información se guardo correctamente."); window.location.href = "/proyectoanalisis/empleado.php";</script>';
-
-                    } else {
-                        echo "Error al insertar en la tabla usuarios: ";
-                    }
-                } else {
-                    echo "Error al modificar la tabla usuarios: ";
+                if ($conn->query($alterUsuariosSql) !== TRUE) {
+                    echo "Error al modificar la tabla usuarios: " . $conn->error;
                 }
 
+                $sql_usuarios = "INSERT INTO usuarios (correo_electronico, nombre_usuario, contrasena, rol)
+                VALUES ('$correo_electronico', '$nombre_completo', 'Nomina123', 'Pendiente')";
+
+                if ($conn->query($sql_usuarios) === TRUE) {
+                    echo '<script>alert("La información se guardo correctamente."); window.location.href = "/proyectoanalisis/empleado.php";</script>';
+                } else {
+                    echo "Error al insertar en la tabla usuarios: " . $conn->error;
+                }
             } else {
-                echo "Error al insertar en la tabla expediente: ";
+                echo "Error al insertar en la tabla expediente: " . $conn->error;
             }
         } else {
-            echo '<script>alert("Error al insertar a la Base de datos."); window.location.href = "/proyectoanalisis/empleado.php";</script>';
-
+            echo "Error al insertar en la tabla empleado: " . $conn->error;
         }
     }
 }
