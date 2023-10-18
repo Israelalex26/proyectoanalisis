@@ -1,16 +1,8 @@
 <?php
-$server = "localhost";
-$user = "root";
-$pass = "";
-$db = "id21355203_nomina";
+include('conexion.php');
 
-// Establece la conexión a la base de datos
-$conn = new mysqli($server, $user, $pass, $db);
+if ($conn){
 
-// Verifica si hay errores en la conexión
-if ($conn->connect_error) {
-  die("Conexion Fallida: " . $conn->connect_error);
-}
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
   $userId = $_GET["id"];
@@ -27,6 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
 
   }
 }
+}else{
+  echo "No se pudo establecer conexión a la base de datos.";
 
-$conn->close();
+}
+
+
 ?>

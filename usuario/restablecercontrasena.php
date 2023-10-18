@@ -1,15 +1,8 @@
 <?php
-$server = "localhost";
-$user = "root";
-$pass = "";
-$db = "id21355203_nomina";
+// Incluye el archivo de conexión
+include('conexion.php');
 
-$conn = new mysqli($server, $user, $pass, $db);
-
-if ($conn->connect_error) {
-  die("Conexion Fallida: " . $conn->connect_error);
-}
-
+if ($conn){
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
   $userId = $_GET["id"];
 
@@ -46,8 +39,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
     echo '<script>alert("Error al restablecer la contraseña."); window.location.href = "/proyectoanalisis/inicio.php";</script>';
   }
 }
+}else{
+  echo "No se pudo establecer conexión a la base de datos.";
 
-$conn->close();
+}
+
+
 
 function generarContrasenaAleatoria($length = 8) {
     // Caracteres que se van a incluir en la contraseña
@@ -99,4 +96,5 @@ function enviarCorreoContrasena($to, $contrasena, $nombreUsuario) {
         
     }
 }
+
 ?>

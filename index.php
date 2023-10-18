@@ -83,10 +83,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo '<script>alert("Por favor, complete todos los campos."); window.location.href = "http://localhost/proyectoanalisis/index.php";</script>';
     } else {
         // Escapa caracteres especiales para prevenir SQL injection
-        $correo_electronico = $conexion->real_escape_string($correo_electronico);
+        $correo_electronico = $conn->real_escape_string($correo_electronico);
 
         // Consulta preparada para prevenir SQL injection
-        $stmt = $conexion->prepare("SELECT correo_electronico, contrasena, rol FROM usuarios WHERE correo_electronico = ?");
+        $stmt = $conn->prepare("SELECT correo_electronico, contrasena, rol FROM usuarios WHERE correo_electronico = ?");
         $stmt->bind_param("s", $correo_electronico);
         $stmt->execute();
         $resultado = $stmt->get_result();

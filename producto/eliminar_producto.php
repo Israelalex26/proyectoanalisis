@@ -1,16 +1,8 @@
 <?php
-// Establece la conexión a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "id21355203_nomina";
+// Incluye el archivo de conexión
+include('conexion.php');
 
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Verifica la conexión
-if ($conn->connect_error) {
-    die("La conexión a la base de datos falló: " . $conn->connect_error);
-}
+if ($conn){
 
 // Obtiene el ID del departamento a eliminar
 $departamento_id = $_GET['id']; // Asegúrate de validar y sanear esta entrada para evitar SQL Injection
@@ -26,6 +18,8 @@ if ($conn->query($sql) === TRUE) {
 
 }
 
-// Cierra la conexión a la base de datos
-$conn->close();
+}else{
+    echo "No se pudo establecer conexión a la base de datos.";
+
+}
 ?>
