@@ -25,52 +25,48 @@
 <body>
 
 <?php
-$server = "localhost";
-$user = "root";
-$pass = "";
-$db = "id21355203_nomina";
 
-$conn = new mysqli($server, $user, $pass, $db);
+include('conexion.php');
 
-if ($conn->connect_error) {
-  die("Conexion Fallida: " . $conn->connect_error);
+if ($conn){
+
+  if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
+    $expedienteId = $_GET["id"];
+  
+    $sql = "SELECT * FROM expediente WHERE id_expediente = $expedienteId";
+    $result = $conn->query($sql);
+  
+    if (!$result) {
+      die("Error en la consulta: " . $conn->error);
+    }
+  
+    if ($result->num_rows > 0) {
+      $row = $result->fetch_assoc();
+  
+      echo '<form action="guardar_modificacion.php" method="POST">
+              <input type="hidden" name="expediente_id" value="' . $row['id_expediente'] . '">
+  
+              <div class="input-group mb-3">
+              <label for="correo">Agregar Expediente</label>
+  
+              <input type="text" class="form-control" id="archivo_pdf" name="archivo_pdf">
+  
+              <button class="btn btn-outline-secondary" type="button" onclick="loginpdf()" >Seleccionar PDF</button>
+                </div>
+  
+              <button type="submit" class="btn btn-primary">Actualizar</button>
+          </form>';
+  
+      echo '<a href="/proyectoanalisis/inicio.php" class="btn btn-secondary">Cancelar</a>';
+  
+    } else {
+      echo "No se encontró un usuario con ese ID.";
+    }
+  }
+  
+
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
-  $expedienteId = $_GET["id"];
-
-  $sql = "SELECT * FROM expediente WHERE id_expediente = $expedienteId";
-  $result = $conn->query($sql);
-
-  if (!$result) {
-    die("Error en la consulta: " . $conn->error);
-  }
-
-  if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-
-    echo '<form action="guardar_modificacion.php" method="POST">
-            <input type="hidden" name="expediente_id" value="' . $row['id_expediente'] . '">
-
-            <div class="input-group mb-3">
-            <label for="correo">Agregar Expediente</label>
-
-            <input type="text" class="form-control" id="archivo_pdf" name="archivo_pdf">
-
-            <button class="btn btn-outline-secondary" type="button" onclick="loginpdf()" >Seleccionar PDF</button>
-              </div>
-
-            <button type="submit" class="btn btn-primary">Actualizar</button>
-        </form>';
-
-    echo '<a href="/proyectoanalisis/inicio.php" class="btn btn-secondary">Cancelar</a>';
-
-  } else {
-    echo "No se encontró un usuario con ese ID.";
-  }
-}
-
-$conn->close();
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
