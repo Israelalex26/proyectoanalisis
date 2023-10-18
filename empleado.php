@@ -1,18 +1,10 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "id21355203_nomina";
 
-// Conexión a la base de datos
-$conn = new mysqli($servername, $username, $password, $dbname);
+include('conexion.php');
 
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
-}
+if ($conn){
 
-// Definir la variable de búsqueda
+    // Definir la variable de búsqueda
 $search = "";
 if (isset($_GET['search'])) {
     $search = $_GET['search'];
@@ -153,8 +145,9 @@ $result = $conn->query($sql);
 
     <?php
     // Cerrar la conexión
-    $conn->close();
-    ?>
+    
+}
+?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
