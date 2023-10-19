@@ -104,12 +104,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $sql = "INSERT INTO producto (nombre, precio, cantidad) VALUES ('$nombre', '$precio', '$cantidad')";
 
       if ($conn->query($sql) === TRUE) {
-          echo '<script>alert("Registro exitoso, Espere un momento."); window.location.href = "/proyectoanalisis/producto.php";</script>';
+          echo '<script>alert("Registro exitoso, Espere un momento."); window.location.href = "http://nominasolidarista.wuaze.com/producto.php";</script>';
       } else {
-          echo '<script>alert("Error al registrar producto:"); window.location.href = "/proyectoanalisis/producto/agregar_producto.php";</script>';
+          echo '<script>alert("Error al registrar producto:"); window.location.href = "http://nominasolidarista.wuaze.com/producto/agregar_producto.php";</script>';
       }
   } else {
-      echo '<script>alert("Error al modificar"); window.location.href = "/proyectoanalisis/producto/agregar_producto.php";</script>';
+      echo '<script>alert("Error al modificar"); window.location.href = "http://nominasolidarista.wuaze.com/producto/agregar_producto.php";</script>';
   }
 
 

@@ -7,18 +7,19 @@ if ($conn){
     include('verificarloggin.php');
 
 
-// Obtiene el ID del departamento a eliminar
-$departamento_id = $_GET['id']; // Asegúrate de validar y sanear esta entrada para evitar SQL Injection
-
-// Prepara la consulta SQL para eliminar el departamento
-$sql = "DELETE FROM departamentos WHERE id = $departamento_id";
+    if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
+        $userId = $_GET["id"];
+      
+        // Elimina el producto con el ID especificado
+        $sql = "DELETE FROM producto WHERE id_producto = $userId";
 
 if ($conn->query($sql) === TRUE) {
-    echo '<script>alert("Producto eliminado con éxito."); window.location.href = "/proyectoanalisis/producto.php";</script>';
+    echo '<script>alert("Producto eliminado con éxito."); window.location.href = "http://nominasolidarista.wuaze.com/producto.php";</script>';
 
 } else {
-    echo '<script>alert("Error al eliminar el producto."); window.location.href = "/proyectoanalisis/producto.php";</script>';
+    echo '<script>alert("Error al eliminar el producto."); window.location.href = "http://nominasolidarista.wuaze.com/producto.php";</script>';
 
+}
 }
 
 }else{

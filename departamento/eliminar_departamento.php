@@ -13,10 +13,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["nombre"])) {
   $sql = "DELETE FROM departamento WHERE departamento = '$nombreDepartamento'";
 
   if ($conn->query($sql) === TRUE) {
-    echo '<script>alert("Departamento eliminado con éxito."); window.location.href = "/proyectoanalisis/departamento.php";</script>';
+    echo '<script>alert("Departamento eliminado con éxito."); window.location.href = "http://nominasolidarista.wuaze.com/departamento.php";</script>';
 
   } else {
-    echo '<script>alert("Error al eliminar el departamento."); window.location.href = "/proyectoanalisis/departamento.php";</script>';
+    echo '<script>alert("Error al eliminar el departamento."); window.location.href = "http://nominasolidarista.wuaze.com/departamento.php";</script>';
   }
 }
 }else{

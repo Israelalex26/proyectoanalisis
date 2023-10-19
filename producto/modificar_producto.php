@@ -61,7 +61,7 @@ if ($conn){
             $sql = "UPDATE producto SET nombre = '$nombre', precio = '$precio', cantidad = '$cantidad' WHERE id_producto = $idProducto";
 
             if ($conn->query($sql) === TRUE) {
-                echo '<script>alert("Los datos se actualizaron correctamente."); window.location.href = "/proyectoanalisis/producto.php";</script>';
+                echo '<script>alert("Los datos se actualizaron correctamente."); window.location.href = "http://nominasolidarista.wuaze.com/producto.php";</script>';
 
             } else {
                 echo '<div class="alert alert-danger" role="alert">Error al actualizar el producto: ' . $conn->error . '</div>';
@@ -95,7 +95,7 @@ if ($conn){
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
         </form>
 
-        <a href="http://localhost/proyectoanalisis/producto.php" class="btn btn-secondary">Cancelar</a>
+        <a href="http://nominasolidarista.wuaze.com/producto.php" class="btn btn-secondary">Cancelar</a>
         
 
     </div>

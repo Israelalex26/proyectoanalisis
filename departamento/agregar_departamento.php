@@ -32,7 +32,7 @@
 
     <div class="div_departamento">
       <label for="departamento" class="label_departamento">Departamento:</label>
-      <input type="text" name="departamento" class="input_departamento" placeholder="Agregar el nombre del departamento0">
+      <input type="text" name="departamento" class="input_departamento" placeholder="Agregar el nombre del departamento">
   </div>
 
   <div class="div_piso">
@@ -47,7 +47,7 @@
 
 </form>
 
-<button class="v150_35" name="cancelar" onclick="window.location.href='http://localhost/proyectoanalisis/departamento.php';">
+<button class="v150_35" name="cancelar" onclick href="http://nominasolidarista.wuaze.com/departamento.php";>
   <span class="v150_36">Cancelar</span>
 </button>
 
@@ -85,16 +85,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //Verifica que todos los campos esten llenos
     if(empty($departamento) || empty($piso)){
 
-        echo '<script>alert("Debes de llenar todos los campos."); window.location.href = "/proyectoanalisis/departamento/agregar_departamento.php";</script>';
+        echo '<script>alert("Debes de llenar todos los campos."); window.location.href = "http://nominasolidarista.wuaze.com/departamento/agregar_departamento.php";</script>';
 
     }else{
         //insertar los datos en la tabla departmant
         $sql_departamento = "INSERT INTO departamento (departamento, piso) VALUES ('$departamento', '$piso');";
 
         if ($conn->query($sql_departamento) === TRUE) {
-            echo '<script>alert("Departamento agregado correctamente."); window.location.href = "/proyectoanalisis/departamento.php";</script>';
+            echo '<script>alert("Departamento agregado correctamente."); window.location.href = "http://nominasolidarista.wuaze.com/departamento.php";</script>';
         } else {
-            echo '<script>alert("Error al subir a la DB"); window.location.href = "/proyectoanalisis/departamento.php";</script>';
+            echo '<script>alert("Error al subir a la DB"); window.location.href = "http://nominasolidarista.wuaze.com/departamento.php";</script>';
         }
 
     }
