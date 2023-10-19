@@ -79,6 +79,9 @@ include('conexion.php');
 
 if ($conn){
 
+    include('verificarloggin.php');
+
+
 // Recuperar datos del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : '';

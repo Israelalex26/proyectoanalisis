@@ -73,6 +73,8 @@ include('conexion.php');
 
 if ($conn){
 
+include('verificarloggin.php');
+
 
 // Verifica si la solicitud es de tipo POST
 if($_SERVER["REQUEST_METHOD"] == "POST"){

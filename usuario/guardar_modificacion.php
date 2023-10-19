@@ -4,6 +4,8 @@ include('conexion.php');
 
 if ($conn){
 
+  include('verificarloggin.php');
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["user_id"])) {
   $userId = $_POST["user_id"];

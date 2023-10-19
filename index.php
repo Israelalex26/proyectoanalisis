@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -66,69 +65,64 @@
 
 </html>
 
-
 <?php
-// Incluye el archivo de conexión
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+session_start();
+
 include('conexion.php');
 
-if ($conn){
-
-// Verifica si la solicitud es de tipo POST
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $correo_electronico = $_POST["correo_electronico"];
-    $contrasena = $_POST["contrasena"];
+if ($conn) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $correo_electronico = $_POST["correo_electronico"];
+        $contrasena = $_POST["contrasena"];
 
     //verificar si los campos estan vacios o no
     if (empty($correo_electronico) || empty($contrasena)) {
-        echo '<script>alert("Por favor, complete todos los campos."); window.location.href = "http://nominasolidarista.wuaze.com/index.php";</script>';
+        echo '<script>alert("Por favor, complete todos los campos."); window.location.href = "http://localhost/proyectoanalisis/index.php";</script>';
     } else {
         // Escapa caracteres especiales para prevenir SQL injection
         $correo_electronico = $conn->real_escape_string($correo_electronico);
 
-        // Consulta preparada para prevenir SQL injection
-        $stmt = $conn->prepare("SELECT correo_electronico, contrasena, rol FROM usuarios WHERE correo_electronico = ?");
-        $stmt->bind_param("s", $correo_electronico);
-        $stmt->execute();
-        $resultado = $stmt->get_result();
+            $stmt = $conn->prepare("SELECT id_usuario, contrasena, rol FROM usuarios WHERE correo_electronico = ?");
+            $stmt->bind_param("s", $correo_electronico);
+            $stmt->execute();
+            $resultado = $stmt->get_result();
 
-        // Verifica si se encontró un resultado
-        if ($resultado->num_rows == 1) {
-            // Las credenciales son válidas
-            $row = $resultado->fetch_assoc();
-            $contrasena_desencriptada = $row['contrasena'];
-            $rol = $row['rol'];
+            if ($resultado->num_rows == 1) {
+                $row = $resultado->fetch_assoc();
+                $contrasena_desencriptada = $row['contrasena'];
+                $rol = $row['rol'];
 
-            // Verifica si la contraseña ingresada coincide con la contraseña almacenada
-            if (password_verify($contrasena, $contrasena_desencriptada)) {
-                $_SESSION['correo_electronico'] = $correo_electronico;
-                $_SESSION['rol'] = $rol;
-                
-                // Redirige según el rol
-                if ($rol == "Admin") {
-                    header("Location: inicio.php");
-                } elseif ($rol == "Trabajador") {
-                    header("Location: inicio.php");
-                } elseif ($rol == "Pendiente") {
-                    header("Location: index.php");
-                } elseif ($rol == "Jefe") {
-                    header("Location: index.php");
+                if (password_verify($contrasena, $contrasena_desencriptada)) {
+                    $_SESSION['correo_electronico'] = $correo_electronico;
+                    $_SESSION['rol'] = $rol;
+                    $_SESSION['loggedin'] = true;  // Agregar esta línea
+
+                    if ($rol == "Admin") {
+                        session_regenerate_id();
+                        $_SESSION['nombre_usuario'] = $_POST['nombre_usuario'];
+                        $_SESSION['id_usuario'] = $row['id_usuario']; // Corregir esta línea
+                        header("Location: inicio.php");
+                    } elseif ($rol == "Trabajador") {
+                        header("Location: inicio.php");
+                    } elseif ($rol == "Pendiente") {
+                        header("Location: index.php");
+                    } elseif ($rol == "Jefe") {
+                        header("Location: index.php");
+                    }
+                } else {
+                    echo '<script>alert("Credenciales incorrectas. Intente nuevamente."); window.location.href = "index.php";</script>';
                 }
             } else {
-                // Las credenciales son inválidas
-                echo '<script>alert("Credenciales incorrectas. Intente nuevamente."); window.location.href = "index.php";</script>';
+                echo '<script>alert("Correo electrónico no registrado."); window.location.href = "index.php";</script>';
             }
-        } else {
-            // El correo electrónico no existe en la base de datos
-            echo '<script>alert("Correo electronico no registrado."); window.location.href = "index.php";</script>';
+
+            $stmt->close();
         }
-
-        $stmt->close();
     }
+} else {
+    echo "No se pudo establecer conexión a la base de datos.";
 }
-
-}else{
-        echo "No se pudo establecer conexión a la base de datos.";
-
-}
-
 ?>
