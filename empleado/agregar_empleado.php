@@ -154,6 +154,9 @@ include('conexion.php');
 
 if ($conn){
 
+include('verificarloggin.php');
+
+
     // Asumiendo que 'fk_cod_empleado' es una columna de la tabla 'expediente'
 $alterExpedienteSql = "ALTER TABLE expediente MODIFY COLUMN id_expediente INT AUTO_INCREMENT";
 

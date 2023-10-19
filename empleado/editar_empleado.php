@@ -29,6 +29,9 @@ include('conexion.php');
 
 if ($conn){
 
+include('verificarloggin.php');
+
+
     if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["cod_empleado"])) {
         $cod_empleado = $_GET["cod_empleado"];
       

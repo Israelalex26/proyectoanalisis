@@ -4,6 +4,9 @@ include('conexion.php');
 
 if ($conn){
 
+    include('verificarloggin.php');
+
+
 // Obtiene el ID del departamento a eliminar
 $departamento_id = $_GET['id']; // Asegúrate de validar y sanear esta entrada para evitar SQL Injection
 

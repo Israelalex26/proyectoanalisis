@@ -23,6 +23,8 @@ include('conexion.php');
 
 if ($conn){
 
+  include('verificarloggin.php');
+
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
   $userId = $_GET["id"];

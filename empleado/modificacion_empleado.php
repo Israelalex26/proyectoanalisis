@@ -3,6 +3,9 @@ include('conexion.php');
 
 if ($conn){
 
+include('verificarloggin.php');
+
+
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["empleado_id"])) {
         $empleadoId = $_POST["empleado_id"];
         $nombre_completo = $_POST["nombre_completo"];

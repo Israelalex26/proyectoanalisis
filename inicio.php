@@ -3,6 +3,11 @@ include('conexion.php');
 
 if ($conn){
 
+    //verifica si ha iniciado session o no
+    include('verificarloggin.php');
+
+ 
+
 // Definir la variable de búsqueda
 $search = "";
 if (isset($_GET['search'])) {

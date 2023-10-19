@@ -3,6 +3,9 @@ include('conexion.php');
 
 if ($conn){
 
+include('verificarloggin.php');
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtener los datos del formulario
     $nombreDepartamento = $_POST["nombre_departamento"];
