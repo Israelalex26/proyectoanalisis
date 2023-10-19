@@ -80,7 +80,7 @@ if ($conn) {
 
     //verificar si los campos estan vacios o no
     if (empty($correo_electronico) || empty($contrasena)) {
-        echo '<script>alert("Por favor, complete todos los campos."); window.location.href = "http://localhost/proyectoanalisis/index.php";</script>';
+        echo '<script>alert("Por favor, complete todos los campos."); window.location.href = "http://nominasolidarista.wuaze.com/index.php";</script>';
     } else {
         // Escapa caracteres especiales para prevenir SQL injection
         $correo_electronico = $conn->real_escape_string($correo_electronico);
