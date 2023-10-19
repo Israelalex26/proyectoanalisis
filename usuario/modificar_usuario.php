@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
   if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
 
-    echo '<form action="guardar_modificacion.php" method="POST">
+    echo '<form action="http://nominasolidarista.wuaze.com/usuario/guardar_modificacion.php" method="POST">
             <input type="hidden" name="user_id" value="' . $row['id_usuario'] . '">
 
             <div class="form-group">
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
             <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>';
 
-    echo '<a href="/proyectoanalisis/inicio.php" class="btn btn-secondary">Cancelar</a>';
+    echo '<a href="http://nominasolidarista.wuaze.com/inicio.php" class="btn btn-secondary">Cancelar</a>';
 
   } else {
     echo "No se encontró un usuario con ese ID.";

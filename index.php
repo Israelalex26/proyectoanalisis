@@ -49,9 +49,9 @@
 
 
       <button class="recover_btn">
-        <a href="recoverpassword.php">
+        <a href="recoverpassword.php">  
             <span class="recover_text">¿Olvidaste tu contraseña?</span>
-        </a>
+            </a>
       </button>
       
       <span class="v10_136">¿No tienes una cuenta? <a href="register.php" class="v10_136-bold">Regístrate</a> </span>
@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //verificar si los campos estan vacios o no
     if (empty($correo_electronico) || empty($contrasena)) {
-        echo '<script>alert("Por favor, complete todos los campos."); window.location.href = "http://localhost/proyectoanalisis/index.php";</script>';
+        echo '<script>alert("Por favor, complete todos los campos."); window.location.href = "http://nominasolidarista.wuaze.com/index.php";</script>';
     } else {
         // Escapa caracteres especiales para prevenir SQL injection
         $correo_electronico = $conn->real_escape_string($correo_electronico);

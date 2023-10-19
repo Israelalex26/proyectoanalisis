@@ -30,13 +30,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
     if ($conn->query($sql) === TRUE) {
       // Enviar la nueva contraseña por correo electrónico al usuario
       enviarCorreoContrasena($correoUsuario, $nuevaContrasena, $nombreUsuario);
-      echo '<script>alert("Se ha restablecido la contraseña y enviado por correo electrónico."); window.location.href = "/proyectoanalisis/inicio.php";</script>';
+      echo '<script>alert("Se ha restablecido la contraseña y enviado por correo electrónico."); window.location.href = "http://nominasolidarista.wuaze.com/inicio.php";</script>';
     } else {
-      echo '<script>alert("Error al restablecer la contraseña."); window.location.href = "/proyectoanalisis/inicio.php";</script>';
+      echo '<script>alert("Error al restablecer la contraseña."); window.location.href = "http://nominasolidarista.wuaze.com/inicio.php";</script>';
 
     }
   } else {
-    echo '<script>alert("Error al restablecer la contraseña."); window.location.href = "/proyectoanalisis/inicio.php";</script>';
+    echo '<script>alert("Error al restablecer la contraseña."); window.location.href = http://nominasolidarista.wuaze.com/inicio.php";</script>';
   }
 }
 }else{
@@ -85,13 +85,13 @@ function enviarCorreoContrasena($to, $contrasena, $nombreUsuario) {
 
     $mail->CharSet = 'UTF-8'; 
     $mail->Subject = "[Nomina Solidarista] Se cambió tu contraseña";
-    $mail->Body = "Hola " . $nombreUsuario . "<br><br>Su contraseña se estableció correctamente.<br><br>Nueva contraseña: " . $contrasena . "<br><br>Si no intentó iniciar sesión en su cuenta, su contraseña puede estar comprometida.<br><br>Visite: <a href='http://localhost/proyectoanalisis/recoverpassword.php'>http://localhost/proyectoanalisis/recoverpassword.php</a> para crear una contraseña nueva y segura para su cuenta de Nomina Solidarista.<br><br>Gracias,<br>El equipo de Nomina Solidarista";
+    $mail->Body = "Hola " . $nombreUsuario . "<br><br>Su contraseña se estableció correctamente.<br><br>Nueva contraseña: " . $contrasena . "<br><br>Si no intentó iniciar sesión en su cuenta, su contraseña puede estar comprometida.<br><br>Visite: <a href='http://nominasolidarista.wuaze.com/recoverpassword.php'>http://nominasolidarista.wuaze.com/recoverpassword.php</a> para crear una contraseña nueva y segura para su cuenta de Nomina Solidarista.<br><br>Gracias,<br>El equipo de Nomina Solidarista";
 
     try {
         $mail->send();
-        echo '<script>alert("Se ha restablecido la contraseña y enviado por correo electrónico."); window.location.href = "/proyectoanalisis/inicio.php";</script>';
+        echo '<script>alert("Se ha restablecido la contraseña y enviado por correo electrónico."); window.location.href = "http://nominasolidarista.wuaze.com/inicio.php";</script>';
     } catch (Exception $e) {
-    echo '<script>alert("Error al enviar el correo."); window.location.href = "/proyectoanalisis/inicio.php";</script>';
+    echo '<script>alert("Error al enviar el correo."); window.location.href = "http://nominasolidarista.wuaze.com/inicio.php";</script>';
 
         
     }

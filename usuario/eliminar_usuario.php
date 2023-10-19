@@ -11,11 +11,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
   $sql = "DELETE FROM usuarios WHERE id_usuario = $userId";
 
   if ($conn->query($sql) === TRUE) {
-    echo '<script>alert("Usuario eliminado con exito."); window.location.href = "/proyectoanalisis/inicio.php";</script>';
+    echo '<script>alert("Usuario eliminado con exito."); window.location.href = "http://nominasolidarista.wuaze.com/inicio.php";</script>';
 
   } else {
     echo "Error al eliminar el usuario: " . $conn->error;
-    echo '<script>alert("Error al eliminar el usuario."); window.location.href = "/proyectoanalisis/inicio.php";</script>';
+    echo '<script>alert("Error al eliminar el usuario."); window.location.href = "http://nominasolidarista.wuaze.com/inicio.php";</script>';
 
   }
 }
