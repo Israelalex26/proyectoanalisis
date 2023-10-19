@@ -4,7 +4,8 @@ include('conexion.php');
 
 if ($conn){
 
-    include('verificarloggin.php');
+     //verifica si ha iniciado session o no
+     include('verificarloggin.php');
 
 
     // Definir la variable de búsqueda

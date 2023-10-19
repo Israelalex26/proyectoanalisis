@@ -3,6 +3,10 @@ include('conexion.php');
 
 if ($conn){
 
+   //verifica si ha iniciado session o no
+   include('verificarloggin.php');
+
+
   if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["expediente_id"])) {
     $expedienteId = $_POST["expediente_id"];
     $archivo_pdf = $_POST["archivo_pdf"];

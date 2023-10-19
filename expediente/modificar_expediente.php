@@ -30,6 +30,10 @@ include('conexion.php');
 
 if ($conn){
 
+   //verifica si ha iniciado session o no
+   include('verificarloggin.php');
+
+
   if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
     $expedienteId = $_GET["id"];
   

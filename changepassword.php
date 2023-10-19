@@ -38,6 +38,8 @@
 include('conexion.php');
 
 if ($conn){
+
+    
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nueva_contrasena = $_POST['contrasena'];
     $repetir_contrasena = $_POST['repit_password'];
