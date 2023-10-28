@@ -19,9 +19,8 @@ body{
   background-position: center center;
   background-size: cover;
   opacity: 1;
-  position: absolute;
-  top: 107px;
   left: 477px;
+  position: absolute;
   overflow: hidden;
 }
 
@@ -284,15 +283,13 @@ body{
     background-size: cover;
     opacity: 1;
     position: absolute;
-    top: 115px;
-    left: 25px;
     overflow: hidden;
   }
   
   .nav10_123{
     width: 380px;
     height: 606px;
-    background: rgba(255,255,255,1);
+    background: #C1C1C1;
     opacity: 1;
     position: relative;
     top: 0px;

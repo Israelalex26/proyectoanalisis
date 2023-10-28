@@ -4,16 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <title>Modificar Departamento</title>
-    <style>
-        body {
-            background-color: #F6F2EB;
-            padding: 20px;
-        }
-        .form-group {
-            margin-bottom: 1rem;
-        }
-    </style>
+    <title>Nomina solidarista</title>
+    <link href="./css/editardepartamento.css" rel="stylesheet" />
+
+
 </head>
 <body>
 
@@ -39,7 +33,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["nombre"])) {
   if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
 
-    echo '<form action="guardar_modificacion_departamento.php" method="POST">
+    echo '
+
+    <div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header text-center"><h4>Editar salario</h4></div>
+        <div class="card-body">
+
+
+    <form action="guardar_modificacion_departamento.php" method="POST">
             <input type="hidden" name="nombre_departamento" value="' . $row['departamento'] . '">
 
             <div class="form-group">
@@ -52,11 +56,15 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["nombre"])) {
                 <input type="text" class="form-control" id="piso" name="piso" value="' . $row['piso'] . '">
             </div>
 
-            <button type="submit" class="btn btn-primary">Actualizar</button>
-        </form>';
-
-        echo '<a href="http://nominasolidarista.wuaze.com/departamento.php" class="btn btn-secondary">Cancelar</a>';
-
+            <button type="submit" class="btn guardar-button">Actualizar</button>
+            <a href="http://nominasolidarista.wuaze.com/departamento.php" class="btn cancelar-button">Cancelar</a>
+        </form>
+        
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>';
 
 
   } else {

@@ -1,8 +1,13 @@
 <?php
+
+// confirmar sesion
 session_start();
-session_destroy();
+    
+if (!isset($_SESSION['loggedin'])) {
+    //dirigiendo a la pestaña index que es el login
+    header('Location: index.php');
 
-
-header('Location: index.php');
+    exit;
+}
 
 ?>

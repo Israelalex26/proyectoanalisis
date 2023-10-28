@@ -47,7 +47,7 @@
 
 </form>
 
-<button class="v150_35" name="cancelar" onclick href="http://nominasolidarista.wuaze.com/departamento.php";>
+ <button class="v150_35" name="cancelar" onclick="window.location.href='http://nominasolidarista.wuaze.com/departamento.php';">
   <span class="v150_36">Cancelar</span>
 </button>
 

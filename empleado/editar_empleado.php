@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <title>Modificar Empleado</title>
+    <link href="./css/editarempleado.css" rel="stylesheet" />
 
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
@@ -12,15 +13,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
   
-    <style>
-        body {
-            background-color: #F6F2EB;
-            padding: 20px;
-        }
-        .form-group {
-            margin-bottom: 1rem;
-        }
-    </style>
+
 </head>
 <body>
 
@@ -32,20 +25,28 @@ if ($conn){
 include('verificarloggin.php');
 
 
-    if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["cod_empleado"])) {
-        $cod_empleado = $_GET["cod_empleado"];
-      
-        $sql = "SELECT * FROM empleado WHERE cod_empleado = '$cod_empleado'";
-        $result = $conn->query($sql);
-      
-        if (!$result) {
-          die("Error en la consulta: " . $conn->error);
-        }
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["nombre"])) {
+    $nombreDepartamento = $_GET["nombre"];
+  
+    $sql = "SELECT * FROM empleado WHERE cod_empleado = '$nombreDepartamento'";
+    $result = $conn->query($sql);
+  
+    if (!$result) {
+      die("Error en la consulta: " . $conn->error);
+    }
       
         if ($result->num_rows > 0) {
           $row = $result->fetch_assoc();
       
           echo '
+
+          <div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header text-center"><h4>Modificar Empleado</h4></div>
+        <div class="card-body">
+
           <form action="modificacion_empleado.php" method="POST">
           
           <input type="hidden" name="empleado_id" value="' . $row['cod_empleado'] . '">
@@ -101,7 +102,7 @@ include('verificarloggin.php');
                       <input type="text" class="form-control" name="fk_departamento" value="' . $row['fk_departamento'] . '">
               
                   </div>
-      
+                  
       
                   <div class="input-group mb-3">
                   <input type="text" class="form-control" id="foto_empleado" name="foto_empleado" value="">
@@ -129,21 +130,29 @@ include('verificarloggin.php');
               
                   </div>
       
-                  <button type="submit" class="btn btn-primary">Actualizar</button>
-              
-                  <button type="submit"  class="btn btn-secondary">Cancelar</button>
-      
+      <button type="submit" class="btn guardar-button">Actualizar</button>    
+                  <a href="http://nominasolidarista.wuaze.com/empleado.php" class="btn cancelar-button">Cancelar</a>  
               </form>
+              
+                  
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              
               ';
-      
-      
+            
         } else {
           echo "No se encontró un empleado con ese código.";
         }
       }
       
 
-}
+}else{
+    echo "No se pudo establecer conexión a la base de datos.";
+  
+  }
 
 ?>
 

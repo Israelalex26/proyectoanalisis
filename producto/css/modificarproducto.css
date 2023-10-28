@@ -1,0 +1,83 @@
+body{
+  background-color: #F6F2EB;
+}
+
+.color_nav{
+    background-color: #E9D5B3; /* Cambia el color de fondo según tus preferencias */
+
+}
+
+body {
+    background-color: #F6F2EB;
+  }
+
+  .guardar-button {
+    background-color: #FEC887;
+    color: #000; 
+  }
+
+  .cancelar-button {
+    border: 1px solid #C1C1C1;
+    color:#000000;
+  }
+
+  .color_nav{
+  background-color: #E9D5B3; /* Cambia el color de fondo según tus preferencias */
+
+}
+
+/* Estilos para el header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #E9D5B3; /* Cambia el color de fondo según tus preferencias */
+  padding: 10px 20px;
+}
+
+/* Estilos para el logo */
+.logo img {
+  max-height: 80px; /* Ajusta el tamaño de tu logo según tus necesidades */
+}
+
+/* Estilos para la navegación */
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin-right: 20px; /* Espaciado entre elementos del menú */
+}
+
+nav ul li:last-child {
+  margin-right: 0; /* Elimina el espaciado del último elemento */
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #000; /* Cambia el color de texto según tus preferencias */
+  font-weight: bold;
+}
+
+
+table {
+  width: 70%;
+  border-collapse: collapse;
+  margin: 20px;
+  background-color: #D99C53;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #ECECEC;
+}
+
+

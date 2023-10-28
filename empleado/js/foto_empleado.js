@@ -62,11 +62,14 @@ function verifyLogin(emailtv, passwordtv){
  });
 
 }
+
+
 function seleccionar_foto() {
   const input = document.createElement('input');
+  
   input.type = 'file';
-  input.accept = 'image/jpeg, image/png'; // Allow only JPG and PNG files
-
+  input.accept = 'image/jpeg, image/png'; 
+  
   input.onchange = async (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -74,7 +77,7 @@ function seleccionar_foto() {
     }
   };
 
-  input.click(); // Open the file input dialog
+  input.click(); 
 }
 
 function subirfoto(file) {

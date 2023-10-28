@@ -6,9 +6,7 @@ if ($conn){
      //verifica si ha iniciado session o no
     include('verificarloggin.php');
 
- 
-    
-    
+     
 // Definir la variable de búsqueda
 $search = "";
 if (isset($_GET['search'])) {
@@ -34,6 +32,29 @@ $result = $conn->query($sql);
     <link href="./css/inicio.css" rel="stylesheet" />
     <title>Nomina PA</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+    body{
+  background-color: #F6F2EB;
+}
+    .editar-btn{
+        background-color: #B26100;
+        color:#ffffff;
+
+    }
+
+    .eliminar-btn{
+        background-color: #B20000;
+        color:#ffffff;
+    }
+
+    .restablecer-btn{
+        background-color: #B26100;
+        color:#ffffff;
+    }
+
+    </style>
+
 </head>
 
 <body>
@@ -46,14 +67,34 @@ $result = $conn->query($sql);
                 <ul>
                     <li><a href="inicio.php">Inicio</a>
                     </li>
-                    <li><a class="dropdown-item" href="empleado.php">Empleado</a></li>
+
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Empleado</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="empleado.php">Empleado</a></li>
+                        <li><a class="dropdown-item" href="expediente.php">expediente</a></li>
+                        <li><a class="dropdown-item" href="asistenciaestadistica.php">Estadistica asistencia</a></li>
+                    </ul>
+                </li>
+
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Planilla</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="planilla.php">IGSS</a></li>
+                    </ul>
+                </li>
+      
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Nomina</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Hora extra</a></li>
-                            <li><a class="dropdown-item" href="#">Bono 14</a></li>
-                            <li><a class="dropdown-item" href="#">Aguinaldo</a></li>
+                            <li><a class="dropdown-item" href="extra.php">Hora extra</a></li>
+                            <li><a class="dropdown-item" href="historialsalario.php">Historial Salario</a></li>
+                            <li><a class="dropdown-item" href="quincena1.php">Primera  Quincena</a></li>
+                            <li><a class="dropdown-item" href="quincena2.php">Segunda Quincena</a></li>
+                             <li><a class="dropdown-item" href="liquidacion.php">Liquidacion</a></li>
                             <li><a class="dropdown-item" href="departamento.php">Departamento</a></li>
                         </ul>
                     </li>
@@ -63,9 +104,9 @@ $result = $conn->query($sql);
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="ventas.php">Ventas</a></li>
                             <li><a class="dropdown-item" href="producto.php">Producto</a></li>
-                            <li><a class="dropdown-item" href="produccion.php">Producción</a></li>
-                            <li><a class="dropdown-item" href="comision.php">Comisión</a></li>
-                            <li><a class="dropdown-item" href="piezas.php">Piezas</a></li>
+                            <li><a class="dropdown-item" href="comprasolidarista.php">Compra tienda Solidarista</a></li>
+                            <li><a class="dropdown-item" href="asistencia.php">Asistencia</a></li>
+                            <li><a class="dropdown-item" href="estadistica.php">Estadistica grafica</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -78,7 +119,7 @@ $result = $conn->query($sql);
                     </li>
                 </ul>
             </nav>
-            <button type="submit" name="cerrar_sesion" class="btn btn-outline-secondary" onclick="return confirm('¿Está seguro de que desea cerrar sesión?')">Cerrar sesión</button>
+            <button type="submit" name="cerrar_sesion" class="btn btn-warning" onclick="return confirm('¿Está seguro de que desea cerrar sesión?')">Cerrar sesión</button>
         </header>
     </form>
 
@@ -108,9 +149,9 @@ $result = $conn->query($sql);
                 echo "<td>" . $row["rol"] . "</td>";
                 echo "<td>" . $row["nombre_usuario"] . "</td>";
                 echo "<td>
-                        <button onclick='editarEmpleado(\"" . $row["id_usuario"] . "\")'>Editar</button>
-                        <button onclick='borrarEmpleado(\"" . $row["id_usuario"] . "\")'>Borrar</button>
-                        <button onclick='restablerContrasena(\"" . $row["id_usuario"] . "\")'>Restablecer contraseña</button>
+                        <button class='btn editar-btn'  onclick='editarEmpleado(\"" . $row["id_usuario"] . "\")'>Editar</button>
+                        <button class=' btn eliminar-btn' onclick='borrarEmpleado(\"" . $row["id_usuario"] . "\")'>Borrar</button>
+                        <button class='btn restablecer-btn' onclick='restablerContrasena(\"" . $row["id_usuario"] . "\")'>Restablecer contraseña</button>
                       </td>";
                 echo "</tr>";
             }
@@ -121,6 +162,7 @@ $result = $conn->query($sql);
     </table>
 
     <script>
+        
         function borrarEmpleado(userId) {
             if (confirm("¿Estás seguro que deseas eliminar este usuario?")) {
                 window.location.href = "usuario/eliminar_usuario.php?id=" + userId;
@@ -136,6 +178,14 @@ $result = $conn->query($sql);
         }
     </script>
 
+<?php
+
+    if (isset($_POST['cerrar_sesion'])) {
+     include('signout.php');
+    }
+
+
+    ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

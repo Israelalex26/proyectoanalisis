@@ -5,7 +5,6 @@ if ($conn){
 
 include('verificarloggin.php');
 
-
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["empleado_id"])) {
         $empleadoId = $_POST["empleado_id"];
         $nombre_completo = $_POST["nombre_completo"];
@@ -24,7 +23,7 @@ include('verificarloggin.php');
     
     
         // Verificar si todos los campos están vacíos
-        if (empty($nombre_completo) || empty($correo_electronico) || empty($dpi) || empty($salario) || empty($numero_telefono) ||
+         if (empty($nombre_completo) || empty($correo_electronico) || empty($dpi) || empty($salario) || empty($numero_telefono) || empty($foto_empleado) ||
             empty($conyuge) || empty($jornada) || empty($activo) || empty($fk_departamento) || empty($fecha_contratacion) || empty($cartnet_irtra) || empty($carnet_igss)) 
         {
             echo "Debe llenar todos los campos.";
@@ -39,13 +38,14 @@ include('verificarloggin.php');
                 WHERE cod_empleado='$empleadoId'";
     
                 if ($conn->query($sql_empleado) === TRUE) {
-                    echo '<script>alert("El empleado se actualizó correctamente."); window.location.href = "/proyectoanalisis/empleado.php";</script>';
+                    echo '<script>alert("El empleado se actualizó correctamente."); window.location.href = "http://nominasolidarista.wuaze.com/empleado.php";</script>';
                 } else {
                     echo '<div class="alert alert-danger" role="alert">Error al actualizar el empleado: ' . $conn->error . '</div>';
                 }
             }
         }
     }
+
 }
 
 ?>

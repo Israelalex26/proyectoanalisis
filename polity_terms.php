@@ -14,13 +14,11 @@
 </head>
 
 <body>
-  <header>
-
-      <div class="logo">
-          <img src="img/v42_4.png" alt="Logo">
-      </div>
-  
-    </header>
+     <header>
+            <div class="logo">
+                <img src="img/v42_4.png" alt="Logo">
+            </div>
+        </header>
 
 
     <nav class="nav1">

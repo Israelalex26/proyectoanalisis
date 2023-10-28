@@ -91,10 +91,6 @@
 </div>
 
 
-<div class="div_fk_departamento">
-  <label  class="label_fk_departamento">Nombre del departamento:</label>
-  <input type="text"  name="fk_departamento" class="input_fk_departamento" placeholder="">
-</div>
 
 
 <div class="div_fecha_contratacion">
@@ -115,16 +111,34 @@
 
 
 
-
-
-<button class="v150_35">
-  <span class="v150_36">Cancelar</span>
-</button>
+  <button class="v150_35" type="button" onclick="cancelar()">
+                <span class="v150_36">Cancelar</span>
+            </button>
 
 
 <button class="v150_40">
   <span class="v150_41">Guardar</span>
 </button>
+
+<div class="div_fk_departamento">
+  <label class="label_fk_departamento">Nombre del departamento:</label>
+  <select name="fk_departamento" class="input_fk_departamento">
+    <option value="">Selecciona un departamento</option>
+    <?php
+    include('conexion.php');
+
+    $sql = "SELECT departamento FROM departamento";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+      while ($row = $result->fetch_assoc()) {
+        echo '<option value="' . $row['departamento'] . '">' . $row['departamento'] . '</option>';
+      }
+    }
+    $conn->close();
+    ?>
+  </select>
+</div>
 
 </form>
 
@@ -143,21 +157,21 @@
 
       <script src="firebase-config.js"></script>
     <script src="js/foto_empleado.js"></script>
-
+  <script>
+        function cancelar() {
+            window.location.href = "http://nominasolidarista.wuaze.com/empleado.php";
+        }
+    </script>
 </body>
 
 </html>
 
 <?php
-
 include('conexion.php');
 
 if ($conn){
 
-include('verificarloggin.php');
 
-
-    // Asumiendo que 'fk_cod_empleado' es una columna de la tabla 'expediente'
 $alterExpedienteSql = "ALTER TABLE expediente MODIFY COLUMN id_expediente INT AUTO_INCREMENT";
 
 if ($conn->query($alterExpedienteSql) !== TRUE) {
@@ -182,44 +196,56 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $expediente_empleado = $_POST['expediente_empleado'];
 
     if (!filter_var($correo_electronico, FILTER_VALIDATE_EMAIL)) {
-        echo '<script>alert("El correo electrónico ingresado no es válido."); window.location.href = "agregar_empleado.php";</script>';
+        echo '<script>alert("El correo electrónico ingresado no es válido."); window.location.href = "http://nominasolidarista.wuaze.com/empleado/agregar_empleado.php";</script>';
         exit();
     } else {
-        // Insertar datos en la tabla de empleado
-        $sql_empleado = "INSERT INTO empleado (cod_empleado, nombre_completo, correo_electronico, dpi, salario, numero_telefono, conyuge, jornada, activo, foto_empleado, fk_departamento, fecha_contratacion, cartnet_irtra, carnet_igss)
+        if (empty($cod_empleado) || empty($nombre_completo) || empty($correo_electronico) || empty($dpi) || empty($salario) || empty($numero_telefono) || empty($conyuge) || empty($jornada) || empty($activo) || empty($foto_empleado) || empty($fk_departamento) || empty($fecha_contratacion) || empty($cartnet_irtra) || empty($carnet_igss) || empty($expediente_empleado)) {
+            echo '<script>alert("Por favor, complete todos los campos."); window.location.href = "http://nominasolidarista.wuaze.com/empleado/agregar_empleado.php";</script>';
+            exit();
+        } else {
+            $sql_empleado = "INSERT INTO empleado (cod_empleado, nombre_completo, correo_electronico, dpi, salario, numero_telefono, conyuge, jornada, activo, foto_empleado, fk_departamento, fecha_contratacion, cartnet_irtra, carnet_igss)
                 VALUES ('$cod_empleado', '$nombre_completo', '$correo_electronico', '$dpi', '$salario', '$numero_telefono', '$conyuge', '$jornada', '$activo', '$foto_empleado', '$fk_departamento', '$fecha_contratacion', '$cartnet_irtra', '$carnet_igss')";
 
-        if ($conn->query($sql_empleado) === TRUE) {
-            // Insertar datos en la tabla de expediente
-            $sql_expediente = "INSERT INTO expediente (archivo_pdf, fk_cod_empleado)
-            VALUES ('$expediente_empleado', '$cod_empleado')";
+            if ($conn->query($sql_empleado) === TRUE) {
+                $sql_expediente = "INSERT INTO expediente (archivo_pdf, fk_cod_empleado)
+                VALUES ('$expediente_empleado', '$cod_empleado')";
 
-            if ($conn->query($sql_expediente) === TRUE) {
-                // Resto del código
-                $alterUsuariosSql = "ALTER TABLE usuarios MODIFY COLUMN id_usuario INT AUTO_INCREMENT";
+                if ($conn->query($sql_expediente) === TRUE) {
+                    $alterUsuariosSql = "ALTER TABLE usuarios MODIFY COLUMN id_usuario INT AUTO_INCREMENT";
 
-                if ($conn->query($alterUsuariosSql) !== TRUE) {
-                    echo "Error al modificar la tabla usuarios: " . $conn->error;
-                }
+                    if ($conn->query($alterUsuariosSql) !== TRUE) {
+                        echo "Error al modificar la tabla usuarios: " . $conn->error;
+                    }
 
-                $sql_usuarios = "INSERT INTO usuarios (correo_electronico, nombre_usuario, contrasena, rol)
-                VALUES ('$correo_electronico', '$nombre_completo', 'Nomina123', 'Pendiente')";
+                    $sql_usuarios = "INSERT INTO usuarios (correo_electronico, nombre_usuario, contrasena, rol)
+                    VALUES ('$correo_electronico', '$nombre_completo', 'Nomina123', 'Pendiente')";
 
-                if ($conn->query($sql_usuarios) === TRUE) {
-                    echo '<script>alert("La información se guardo correctamente."); window.location.href = "/proyectoanalisis/empleado.php";</script>';
+                    if ($conn->query($sql_usuarios) === TRUE) {
+
+                    $alterHistorialSalarioSql = "ALTER TABLE historialsalario MODIFY COLUMN id_historialsalario INT AUTO_INCREMENT";
+
+                    if ($conn->query($alterHistorialSalarioSql) !== TRUE) {
+                      echo "Error al modificar la tabla usuarios: " . $conn->error;
+                  }
+  
+
+                  $sql_historial_salario = "INSERT INTO historialsalario (salario_anterior, salario_nuevo, fk_cod_empleado)
+                  VALUES ('$salrio', '$salario', '$cod_empleado')";
+                  
+                  if ($conn->query($sql_historial_salario) === TRUE){
+                        echo '<script>alert("La información se guardó correctamente."); window.location.href = "http://nominasolidarista.wuaze.com/empleado.php";</script>';
+                  }
+                    } else {
+                        echo "Error al insertar en la tabla usuarios: " . $conn->error;
+                    }
                 } else {
-                    echo "Error al insertar en la tabla usuarios: " . $conn->error;
+                    echo "Error al insertar en la tabla expediente: " . $conn->error;
                 }
             } else {
-                echo "Error al insertar en la tabla expediente: " . $conn->error;
+                echo "Error al insertar en la tabla empleado: " . $conn->error;
             }
-        } else {
-            echo "Error al insertar en la tabla empleado: " . $conn->error;
         }
     }
-  }
-
 }
-
-
+}
 ?>

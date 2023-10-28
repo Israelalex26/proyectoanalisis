@@ -98,15 +98,20 @@ if ($conn) {
                 if (password_verify($contrasena, $contrasena_desencriptada)) {
                     $_SESSION['correo_electronico'] = $correo_electronico;
                     $_SESSION['rol'] = $rol;
-                    $_SESSION['loggedin'] = true;  // Agregar esta línea
+                    $_SESSION['loggedin'] = true; 
 
                     if ($rol == "Admin") {
                         session_regenerate_id();
                         $_SESSION['nombre_usuario'] = $_POST['nombre_usuario'];
-                        $_SESSION['id_usuario'] = $row['id_usuario']; // Corregir esta línea
+                        $_SESSION['id_usuario'] = $row['id_usuario']; 
                         header("Location: inicio.php");
+
                     } elseif ($rol == "Trabajador") {
-                        header("Location: inicio.php");
+                         session_regenerate_id();
+                        $_SESSION['nombre_usuario'] = $_POST['nombre_usuario'];
+                        $_SESSION['id_usuario'] = $row['id_usuario']; 
+                        header("Location: inicio_trabajador.php");
+
                     } elseif ($rol == "Pendiente") {
                         header("Location: index.php");
                     } elseif ($rol == "Jefe") {

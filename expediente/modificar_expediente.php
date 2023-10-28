@@ -20,6 +20,16 @@
         .form-group {
             margin-bottom: 1rem;
         }
+          .guardar-button {
+    background-color: #FEC887;
+    color: #000; 
+  }
+
+  .cancelar-button {
+    border: 1px solid #C1C1C1;
+    color:#000000;
+  }
+
     </style>
 </head>
 <body>
@@ -47,7 +57,13 @@ if ($conn){
     if ($result->num_rows > 0) {
       $row = $result->fetch_assoc();
   
-      echo '<form action="guardar_modificacion.php" method="POST">
+      echo '
+      <div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header text-center"><h4>Modificar expediente</h4></div>
+      <form action="guardar_modificacion.php" method="POST">
               <input type="hidden" name="expediente_id" value="' . $row['id_expediente'] . '">
   
               <div class="input-group mb-3">
@@ -58,11 +74,15 @@ if ($conn){
               <button class="btn btn-outline-secondary" type="button" onclick="loginpdf()" >Seleccionar PDF</button>
                 </div>
   
-              <button type="submit" class="btn btn-primary">Actualizar</button>
-          </form>';
-  
-      echo '<a href="/proyectoanalisis/inicio.php" class="btn btn-secondary">Cancelar</a>';
-  
+              <button type="submit" class="btn guardar-button">Actualizar</button>
+              <a href="http://nominasolidarista.wuaze.com/expediente.php" class="btn cancelar-button">Cancelar</a>
+          </form>
+          
+          </div>
+          </div>
+          </div>
+          </div>';
+    
     } else {
       echo "No se encontró un usuario con ese ID.";
     }
